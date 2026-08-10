@@ -4,6 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kementerian Minat dan Bakat — BEM FT Unsoed</title>
+<meta name="description" content="Kementerian Minat dan Bakat BEM FT Unsoed, Kabinet Sagara Cakrawala — wadah program kerja, agenda kerja, delegasi lomba, dan peminjaman alat bagi KBMFT di bidang olahraga dan seni.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Kementerian Minat dan Bakat — BEM FT Unsoed">
+<meta property="og:description" content="Wadah program kerja, agenda kerja, delegasi lomba, dan peminjaman alat bagi KBMFT di bidang olahraga dan seni.">
+<meta property="og:image" content="Mikat Logo Preview 1.png">
+<meta property="og:locale" content="id_ID">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kementerian Minat dan Bakat — BEM FT Unsoed">
+<meta name="twitter:description" content="Wadah program kerja, agenda kerja, delegasi lomba, dan peminjaman alat bagi KBMFT di bidang olahraga dan seni.">
 <link rel="icon" type="image/png" href="Mikat Logo Preview 1.png">
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -31,7 +40,7 @@
   <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
   <div class="lightbox-panel">
     <button class="lightbox-close" id="lightboxClose" aria-label="Tutup foto">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
     <div class="lightbox-photo"><img id="lightboxImg" src="" alt=""></div>
     <div class="lightbox-info">
@@ -42,19 +51,24 @@
 </div>
 
 <button class="to-top" id="toTop" aria-label="Kembali ke atas">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="6 11 12 5 18 11"/></svg>
+  <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="6 11 12 5 18 11"/></svg>
 </button>
 
 <div class="rail-nav" id="railNav" aria-hidden="true">
   <a href="#top" data-label="Beranda" class="rail-dot"></a>
-  <a href="#tentang" data-label="Tentang" class="rail-dot"></a>
-  <a href="#visi" data-label="Visi &amp; Misi" class="rail-dot"></a>
+  <a href="#profil" data-label="Profil" class="rail-dot"></a>
+  <a href="#galeri" data-label="Galeri" class="rail-dot"></a>
+  <a href="#tentang" data-label="Visi &amp; Misi" class="rail-dot"></a>
   <a href="#proker" data-label="Program &amp; Agenda" class="rail-dot"></a>
-  <a href="#Profil" data-label="Profil" class="rail-dot"></a>
+  <a href="#peminjaman" data-label="Peminjaman Alat" class="rail-dot"></a>
+  <a href="#delegasi" data-label="Delegasi Lomba" class="rail-dot"></a>
   <a href="#kontak" data-label="Kontak" class="rail-dot"></a>
 </div>
 
 <div class="scroll-progress" id="scrollProgress"></div>
+<div class="scroll-ball" id="scrollBall" aria-hidden="true">
+  <svg aria-hidden="true" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="#F4EAD3" stroke="#A32330" stroke-width="4"/><path d="M20 15 Q50 50 20 85" stroke="#A32330" stroke-width="4" fill="none"/><path d="M80 15 Q50 50 80 85" stroke="#A32330" stroke-width="4" fill="none"/></svg>
+</div>
 
 <nav id="siteNav">
   <div class="nav-bars"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
@@ -68,10 +82,10 @@
         </div>
       </a>
       <ul class="nav-links" id="navLinks">
+        <li><a href="#profil">Profil</a></li>
         <li><a href="#tentang">Tentang</a></li>
-        <li><a href="#visi">Visi &amp; Misi</a></li>
-        <li><a href="#proker">Program Kerja</a></li>
-        <li><a href="#Profil">Profil</a></li>
+        <li><a href="#peminjaman">Peminjaman Alat</a></li>
+        <li><a href="#delegasi">Delegasi Lomba</a></li>
       </ul>
       <a href="#kontak" class="nav-cta magnetic">Kontak</a>
       <button class="menu-btn" id="menuBtn" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="mobileMenu">
@@ -82,10 +96,10 @@
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
+  <a href="#profil">Profil</a>
   <a href="#tentang">Tentang</a>
-  <a href="#visi">Visi &amp; Misi</a>
-  <a href="#proker">Program Kerja</a>
-  <a href="#Profil">Profil</a>
+  <a href="#peminjaman">Peminjaman Alat</a>
+  <a href="#delegasi">Delegasi Lomba</a>
   <a href="#kontak">Kontak</a>
 </div>
 
@@ -93,11 +107,11 @@
 
   <section class="hero">
     <div class="ball-field" aria-hidden="true">
-      <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="#F4EAD3" stroke="#16214A" stroke-width="3"/><path d="M20 15 Q50 50 20 85" stroke="#A32330" stroke-width="3" fill="none"/><path d="M80 15 Q50 50 80 85" stroke="#A32330" stroke-width="3" fill="none"/></svg>
-      <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="#F4EAD3" stroke="#16214A" stroke-width="3"/><path d="M20 15 Q50 50 20 85" stroke="#A32330" stroke-width="3" fill="none"/><path d="M80 15 Q50 50 80 85" stroke="#A32330" stroke-width="3" fill="none"/></svg>
-      <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="#F4EAD3" stroke="#16214A" stroke-width="3"/><path d="M20 15 Q50 50 20 85" stroke="#A32330" stroke-width="3" fill="none"/><path d="M80 15 Q50 50 80 85" stroke="#A32330" stroke-width="3" fill="none"/></svg>
-      <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="#F4EAD3" stroke="#16214A" stroke-width="3"/><path d="M20 15 Q50 50 20 85" stroke="#A32330" stroke-width="3" fill="none"/><path d="M80 15 Q50 50 80 85" stroke="#A32330" stroke-width="3" fill="none"/></svg>
-      <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="#F4EAD3" stroke="#16214A" stroke-width="3"/><path d="M20 15 Q50 50 20 85" stroke="#A32330" stroke-width="3" fill="none"/><path d="M80 15 Q50 50 80 85" stroke="#A32330" stroke-width="3" fill="none"/></svg>
+      <svg aria-hidden="true" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="#F4EAD3" stroke="#16214A" stroke-width="3"/><path d="M20 15 Q50 50 20 85" stroke="#A32330" stroke-width="3" fill="none"/><path d="M80 15 Q50 50 80 85" stroke="#A32330" stroke-width="3" fill="none"/></svg>
+      <svg aria-hidden="true" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="#F4EAD3" stroke="#16214A" stroke-width="3"/><path d="M20 15 Q50 50 20 85" stroke="#A32330" stroke-width="3" fill="none"/><path d="M80 15 Q50 50 80 85" stroke="#A32330" stroke-width="3" fill="none"/></svg>
+      <svg aria-hidden="true" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="#F4EAD3" stroke="#16214A" stroke-width="3"/><path d="M20 15 Q50 50 20 85" stroke="#A32330" stroke-width="3" fill="none"/><path d="M80 15 Q50 50 80 85" stroke="#A32330" stroke-width="3" fill="none"/></svg>
+      <svg aria-hidden="true" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="#F4EAD3" stroke="#16214A" stroke-width="3"/><path d="M20 15 Q50 50 20 85" stroke="#A32330" stroke-width="3" fill="none"/><path d="M80 15 Q50 50 80 85" stroke="#A32330" stroke-width="3" fill="none"/></svg>
+      <svg aria-hidden="true" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="#F4EAD3" stroke="#16214A" stroke-width="3"/><path d="M20 15 Q50 50 20 85" stroke="#A32330" stroke-width="3" fill="none"/><path d="M80 15 Q50 50 80 85" stroke="#A32330" stroke-width="3" fill="none"/></svg>
     </div>
     <div class="hero-stars reveal"><span>★</span> <span>★</span> <span>★</span></div>
     <h1 class="reveal" style="--d:.06s">Ruang untuk<span class="script">berlaga &amp; berkarya</span></h1>
@@ -112,77 +126,186 @@
             <span class="flap-digit" style="--fi:1"><span class="flap-face">2</span></span>
           </span>
           <span class="score-cta">Lihat program
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </span>
         </button>
         <button class="score-tile" data-target="proker-agenda" style="--i:1">
           <span class="score-label">Agenda Kerja</span>
-          <span class="flap-num" data-digits="05">
+          <span class="flap-num" data-digits="06">
             <span class="flap-digit" style="--fi:0"><span class="flap-face">0</span></span>
-            <span class="flap-digit" style="--fi:1"><span class="flap-face">5</span></span>
+            <span class="flap-digit" style="--fi:1"><span class="flap-face">6</span></span>
           </span>
           <span class="score-cta">Lihat agenda
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </span>
         </button>
-        <button class="score-tile" data-target="Profil" style="--i:2">
+        <button class="score-tile" data-target="profil" style="--i:2">
           <span class="score-label">Anggota</span>
           <span class="flap-num" data-digits="10">
             <span class="flap-digit" style="--fi:0"><span class="flap-face">1</span></span>
             <span class="flap-digit" style="--fi:1"><span class="flap-face">0</span></span>
           </span>
           <span class="score-cta">Lihat profil
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </span>
         </button>
       </div>
     </div>
     <button class="scroll-cue" id="scrollCue" aria-label="Gulir ke bagian Tentang">
       <span class="cue-label">Jelajahi</span>
-      <span class="cue-ball"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="6"/><path d="M20 15 Q50 50 20 85" stroke="currentColor" stroke-width="6" fill="none"/><path d="M80 15 Q50 50 80 85" stroke="currentColor" stroke-width="6" fill="none"/></svg></span>
+      <span class="cue-ball"><svg aria-hidden="true" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="6"/><path d="M20 15 Q50 50 20 85" stroke="currentColor" stroke-width="6" fill="none"/><path d="M80 15 Q50 50 80 85" stroke="currentColor" stroke-width="6" fill="none"/></svg></span>
     </button>
   </section>
 
   <div class="marquee-band" aria-hidden="true">
     <div class="marquee-track">
       <span>POST 4.0</span><span class="mq-dot">★</span><span>Techart 3.0</span><span class="mq-dot">★</span><span>FORTUNA</span><span class="mq-dot">★</span><span>Techno Afterhours</span><span class="mq-dot">★</span><span>Techno Talent Hub</span><span class="mq-dot">★</span><span>Delegasi Lomba</span><span class="mq-dot">★</span><span>Lingkar Mikat X Lingkar Sinema</span><span class="mq-dot">★</span>
-      <span>POST 4.0</span><span class="mq-dot">★</span><span>Techart 3.0</span><span class="mq-dot">★</span><span>FORTUNA</span><span class="mq-dot">★</span><span>Techno Afterhours</span><span class="mq-dot">★</span><span>Techno Talent Hub</span><span class="mq-dot">★</span><span>Delegasi Lomba</span><span class="mq-dot">★</span><span>Lingkar Mikat X Lingkar Sinema</span><span class="mq-dot">★</span>
+      <span>POST 4.0</span><span class="mq-dot">★</span><span>Techart 3.0</span><span class="mq-dot">★</span><span>FORTUNA</span><span class="mq-dot">★</span><span>Techno Afterhours</span><span class="mq-dot">★</span><span>Techno Talent Hub</span><span class="mq-dot">★</span><span>Delegasi Lomba</span><span class="mq-dot">★</span><span>Lingkar Mikat X Lingkar Sinema</span><span class="mq-dot">★</span><span>Peminjaman Alat</span><span class="mq-dot">★</span><span>Alur Pengajuan Delegasi</span><span class="mq-dot">★</span>
+      <span>POST 4.0</span><span class="mq-dot">★</span><span>Techart 3.0</span><span class="mq-dot">★</span><span>FORTUNA</span><span class="mq-dot">★</span><span>Techno Afterhours</span><span class="mq-dot">★</span><span>Techno Talent Hub</span><span class="mq-dot">★</span><span>Delegasi Lomba</span><span class="mq-dot">★</span><span>Lingkar Mikat X Lingkar Sinema</span><span class="mq-dot">★</span><span>Peminjaman Alat</span><span class="mq-dot">★</span><span>Alur Pengajuan Delegasi</span><span class="mq-dot">★</span>
     </div>
   </div>
 
   <div class="stitch reveal"></div>
 
-  <section id="tentang" class="sec">
+  <section id="profil" class="sec">
     <div class="container">
       <div class="sec-head reveal">
         <div>
-          <div class="eyebrow"><span class="stars"><span>★</span><span>★</span><span>★</span></span>Tentang</div>
+          <div class="eyebrow"><span class="stars"><span>★</span><span>★</span><span>★</span></span>Profil</div>
           <h2 class="sec-title">Siapa kami</h2>
         </div>
         <p class="sec-desc">Wadah pengembangan prestasi mahasiswa Fakultas Teknik di bidang olahraga, dan Seni.</p>
       </div>
-      <div class="about-grid">
-        <div class="reveal">
-          <p>Kementerian Minat dan Bakat BEM FT Unsoed hadir untuk mewujudkan optimalisasi aktivitas mahasiswa Teknik berdasarkan potensi minat dan bakat yang berkembang di lingkungan fakultas — dari lapangan olahraga hingga panggung seni.</p>
-          <p>Kami merangkul seluruh elemen, UKM, dan komunitas seni-olahraga di Fakultas Teknik, membina delegasi lomba, serta menjadi ruang apresiasi bagi mahasiswa yang berprestasi di bidang non-akademik.</p>
+
+      <div class="about-lead reveal">
+        <p>Kementerian Minat dan Bakat BEM FT Unsoed hadir untuk mewujudkan optimalisasi aktivitas mahasiswa Teknik berdasarkan potensi minat dan bakat yang berkembang di lingkungan fakultas — dari lapangan olahraga hingga panggung seni.</p>
+        <p>Kami merangkul seluruh elemen, UKM, dan komunitas seni-olahraga di Fakultas Teknik, membina delegasi lomba, serta menjadi ruang apresiasi bagi mahasiswa yang berprestasi di bidang non-akademik.</p>
+      </div>
+
+      <div class="profile-divider reveal" aria-hidden="true"><span></span></div>
+
+      <h3 class="team-heading reveal">Profil Kementerian</h3>
+
+      <div class="tim-caption reveal" style="margin-top:0;">Menteri &amp; Wakil Menteri</div>
+      <div class="org-lead reveal">
+        <div class="person lead" tabindex="0" role="button" data-photo="IMG_6272 (Large).JPG" data-name="Callista Okta Livia" data-role="Menteri">
+          <div class="photo-frame"><img src="IMG_6272 (Large).JPG" alt="Foto Callista Okta Livia" loading="lazy" onerror="this.closest('.photo-frame').classList.add('no-photo')"><span class="avatar-fallback">CO</span><span class="photo-zoom" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span></div>
+          <div class="pname">Callista Okta Livia</div><div class="prole">Menteri</div>
         </div>
-        <div class="misi reveal" style="--d:.1s">
-          <div class="misi-row"><div class="star">★</div><p>Mengoptimalkan wadah minat dan bakat mahasiswa Teknik lewat kompetisi internal maupun eksternal.</p></div>
-          <div class="misi-row"><div class="star">★</div><p>Memberikan pelayanan kepada UKM dan komunitas seni-olahraga di lingkup Fakultas Teknik.</p></div>
-          <div class="misi-row"><div class="star">★</div><p>Membina delegasi mahasiswa Teknik dalam ajang perlombaan untuk menunjang prestasi.</p></div>
-          <div class="misi-row"><div class="star">★</div><p>Memberikan apresiasi intensif kepada mahasiswa berprestasi di bidang seni dan olahraga.</p></div>
+        <div class="person lead" tabindex="0" role="button" data-photo="IMG_6317 (Large).JPG" data-name="Muhammad Raihan Nabil" data-role="Wakil Menteri">
+          <div class="photo-frame"><img src="IMG_6317 (Large).JPG" alt="Foto Muhammad Raihan Nabil" loading="lazy" onerror="this.closest('.photo-frame').classList.add('no-photo')"><span class="avatar-fallback">MR</span><span class="photo-zoom" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span></div>
+          <div class="pname">Muhammad Raihan Nabil</div><div class="prole">Wakil Menteri</div>
+        </div>
+      </div>
+
+      <div class="org-connector reveal"></div>
+
+      <div class="tim-caption staff-caption reveal">Staff Minat dan Bakat</div>
+      <div class="staff-grid reveal">
+        <div class="person" tabindex="0" role="button" data-photo="IMG_6309 (Large).JPG" data-name="Satria Nugraha Surya Putra" data-role="Staff">
+          <div class="photo-frame"><img src="IMG_6309 (Large).JPG" alt="Foto Satria Nugraha Surya Putra" loading="lazy" onerror="this.closest('.photo-frame').classList.add('no-photo')"><span class="avatar-fallback">SN</span><span class="photo-zoom" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span></div>
+          <div class="pname">Satria Nugraha Surya Putra</div><div class="prole">Staff</div>
+        </div>
+        <div class="person" tabindex="0" role="button" data-photo="IMG_6302 (Large).JPG" data-name="Lionny Amanda Karubaba" data-role="Staff">
+          <div class="photo-frame"><img src="IMG_6302 (Large).JPG" alt="Foto Lionny Amanda Karubaba" loading="lazy" onerror="this.closest('.photo-frame').classList.add('no-photo')"><span class="avatar-fallback">LA</span><span class="photo-zoom" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span></div>
+          <div class="pname">Lionny Amanda Karubaba</div><div class="prole">Staff</div>
+        </div>
+        <div class="person" tabindex="0" role="button" data-photo="IMG_6299 (Large).JPG" data-name="Khaneswari Putri Pradipta" data-role="Staff">
+          <div class="photo-frame"><img src="IMG_6299 (Large).JPG" alt="Foto Khaneswari Putri Pradipta" loading="lazy" onerror="this.closest('.photo-frame').classList.add('no-photo')"><span class="avatar-fallback">KP</span><span class="photo-zoom" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span></div>
+          <div class="pname">Khaneswari Putri Pradipta</div><div class="prole">Staff</div>
+        </div>
+        <div class="person" tabindex="0" role="button" data-photo="IMG_6281 (Large).JPG" data-name="Zahran Febrian Nugraha" data-role="Staff">
+          <div class="photo-frame"><img src="IMG_6281 (Large).JPG" alt="Foto Zahran Febrian Nugraha" loading="lazy" onerror="this.closest('.photo-frame').classList.add('no-photo')"><span class="avatar-fallback">ZF</span><span class="photo-zoom" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span></div>
+          <div class="pname">Zahran Febrian Nugraha</div><div class="prole">Staff</div>
+        </div>
+        <div class="person" tabindex="0" role="button" data-photo="IMG_6320 (Large).JPG" data-name="Ratu Alya Al Ghaniyy Susanto" data-role="Staff">
+          <div class="photo-frame"><img src="IMG_6320 (Large).JPG" alt="Foto Ratu Alya Al Ghaniyy Susanto" loading="lazy" onerror="this.closest('.photo-frame').classList.add('no-photo')"><span class="avatar-fallback">RA</span><span class="photo-zoom" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span></div>
+          <div class="pname">Ratu Alya Al Ghaniyy Susanto</div><div class="prole">Staff</div>
+        </div>
+        <div class="person" tabindex="0" role="button" data-photo="IMG_6291 (Large).JPG" data-name="Alya Levia Putri" data-role="Staff">
+          <div class="photo-frame"><img src="IMG_6291 (Large).JPG" alt="Foto Alya Levia Putri" loading="lazy" onerror="this.closest('.photo-frame').classList.add('no-photo')"><span class="avatar-fallback">AL</span><span class="photo-zoom" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span></div>
+          <div class="pname">Alya Levia Putri</div><div class="prole">Staff</div>
+        </div>
+        <div class="person" tabindex="0" role="button" data-photo="IMG_6306 (Large).JPG" data-name="Hafiz Juninda" data-role="Staff">
+          <div class="photo-frame"><img src="IMG_6306 (Large).JPG" alt="Foto Hafiz Juninda" loading="lazy" onerror="this.closest('.photo-frame').classList.add('no-photo')"><span class="avatar-fallback">HJ</span><span class="photo-zoom" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span></div>
+          <div class="pname">Hafiz Juninda</div><div class="prole">Staff</div>
+        </div>
+        <div class="person" tabindex="0" role="button" data-photo="IMG_6296 (Large).JPG" data-name="Lunetta Az-Zahra Kayana Hidayat" data-role="Staff">
+          <div class="photo-frame"><img src="IMG_6296 (Large).JPG" alt="Foto Lunetta Az-Zahra Kayana Hidayat" loading="lazy" onerror="this.closest('.photo-frame').classList.add('no-photo')"><span class="avatar-fallback">LK</span><span class="photo-zoom" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span></div>
+          <div class="pname">Lunetta Az-Zahra Kayana Hidayat</div><div class="prole">Staff</div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="visi" class="sec visi-sec">
+  <div class="stitch reveal"></div>
+
+  <section id="galeri" class="sec">
+    <div class="container">
+      <div class="sec-head reveal">
+        <div>
+          <div class="eyebrow"><span class="stars"><span>★</span><span>★</span><span>★</span></span>Dokumentasi</div>
+          <h2 class="sec-title">Galeri</h2>
+        </div>
+        <p class="sec-desc">Cuplikan kegiatan Kementerian Minat dan Bakat.</p>
+      </div>
+
+      <div class="gallery-grid reveal">
+        <div class="gallery-item">
+          <div class="gallery-frame">
+            <img src="Galeri/post-4.0-1.jpg" alt="Dokumentasi POST 4.0" loading="lazy" onerror="this.closest('.gallery-frame').classList.add('no-photo')">
+            <span class="gallery-icon" aria-hidden="true">📷</span>
+          </div>
+          <div class="gallery-cap">POST 4.0</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-frame">
+            <img src="Galeri/techart-3.0-1.jpg" alt="Dokumentasi Techart 3.0" loading="lazy" onerror="this.closest('.gallery-frame').classList.add('no-photo')">
+            <span class="gallery-icon" aria-hidden="true">📷</span>
+          </div>
+          <div class="gallery-cap">Techart 3.0</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-frame">
+            <img src="Galeri/fortuna-1.jpg" alt="Dokumentasi FORTUNA" loading="lazy" onerror="this.closest('.gallery-frame').classList.add('no-photo')">
+            <span class="gallery-icon" aria-hidden="true">📷</span>
+          </div>
+          <div class="gallery-cap">FORTUNA</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-frame">
+            <img src="Galeri/techno-afterhours-1.jpg" alt="Dokumentasi Techno Afterhours" loading="lazy" onerror="this.closest('.gallery-frame').classList.add('no-photo')">
+            <span class="gallery-icon" aria-hidden="true">📷</span>
+          </div>
+          <div class="gallery-cap">Techno Afterhours</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-frame">
+            <img src="Galeri/delegasi-lomba-1.jpg" alt="Dokumentasi Delegasi Lomba" loading="lazy" onerror="this.closest('.gallery-frame').classList.add('no-photo')">
+            <span class="gallery-icon" aria-hidden="true">📷</span>
+          </div>
+          <div class="gallery-cap">Delegasi Lomba</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-frame">
+            <img src="Galeri/lingkar-mikat-1.jpg" alt="Dokumentasi Lingkar Mikat X Lingkar Sinema" loading="lazy" onerror="this.closest('.gallery-frame').classList.add('no-photo')">
+            <span class="gallery-icon" aria-hidden="true">📷</span>
+          </div>
+          <div class="gallery-cap">Lingkar Mikat X Sinema</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="stitch navy reveal"></div>
+
+  <section id="tentang" class="sec visi-sec">
     <div class="ball-field" aria-hidden="true">
-      <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="#F4EAD3" stroke-width="3"/><path d="M20 15 Q50 50 20 85" stroke="#F4EAD3" stroke-width="3" fill="none"/><path d="M80 15 Q50 50 80 85" stroke="#F4EAD3" stroke-width="3" fill="none"/></svg>
-      <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="#F4EAD3" stroke-width="3"/><path d="M20 15 Q50 50 20 85" stroke="#F4EAD3" stroke-width="3" fill="none"/><path d="M80 15 Q50 50 80 85" stroke="#F4EAD3" stroke-width="3" fill="none"/></svg>
-      <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="#F4EAD3" stroke-width="3"/><path d="M20 15 Q50 50 20 85" stroke="#F4EAD3" stroke-width="3" fill="none"/><path d="M80 15 Q50 50 80 85" stroke="#F4EAD3" stroke-width="3" fill="none"/></svg>
-      <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="#F4EAD3" stroke-width="3"/><path d="M20 15 Q50 50 20 85" stroke="#F4EAD3" stroke-width="3" fill="none"/><path d="M80 15 Q50 50 80 85" stroke="#F4EAD3" stroke-width="3" fill="none"/></svg>
-      <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="#F4EAD3" stroke-width="3"/><path d="M20 15 Q50 50 20 85" stroke="#F4EAD3" stroke-width="3" fill="none"/><path d="M80 15 Q50 50 80 85" stroke="#F4EAD3" stroke-width="3" fill="none"/></svg>
+      <svg aria-hidden="true" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="#F4EAD3" stroke-width="3"/><path d="M20 15 Q50 50 20 85" stroke="#F4EAD3" stroke-width="3" fill="none"/><path d="M80 15 Q50 50 80 85" stroke="#F4EAD3" stroke-width="3" fill="none"/></svg>
+      <svg aria-hidden="true" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="#F4EAD3" stroke-width="3"/><path d="M20 15 Q50 50 20 85" stroke="#F4EAD3" stroke-width="3" fill="none"/><path d="M80 15 Q50 50 80 85" stroke="#F4EAD3" stroke-width="3" fill="none"/></svg>
+      <svg aria-hidden="true" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="#F4EAD3" stroke-width="3"/><path d="M20 15 Q50 50 20 85" stroke="#F4EAD3" stroke-width="3" fill="none"/><path d="M80 15 Q50 50 80 85" stroke="#F4EAD3" stroke-width="3" fill="none"/></svg>
+      <svg aria-hidden="true" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="#F4EAD3" stroke-width="3"/><path d="M20 15 Q50 50 20 85" stroke="#F4EAD3" stroke-width="3" fill="none"/><path d="M80 15 Q50 50 80 85" stroke="#F4EAD3" stroke-width="3" fill="none"/></svg>
+      <svg aria-hidden="true" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="#F4EAD3" stroke-width="3"/><path d="M20 15 Q50 50 20 85" stroke="#F4EAD3" stroke-width="3" fill="none"/><path d="M80 15 Q50 50 80 85" stroke="#F4EAD3" stroke-width="3" fill="none"/></svg>
     </div>
     <div class="container">
       <div class="vm-head reveal">
@@ -215,7 +338,7 @@
     </div>
   </section>
 
-  <section id="proker" class="sec" style="background:var(--cream-deep); padding-top:0;">
+  <section id="proker" class="sec" style="background:var(--cream-soft); padding-top:0;">
     <div class="container">
       <div class="sec-head reveal">
         <div>
@@ -229,7 +352,7 @@
       <div class="tab-bar reveal">
         <div class="tab-switch" role="tablist" aria-label="Kategori kerja">
           <button class="tab-btn active" data-tab="proker" role="tab" aria-selected="true">Program Kerja<span class="cnt">02</span></button>
-          <button class="tab-btn" data-tab="agenda" role="tab" aria-selected="false">Agenda Kerja<span class="cnt">05</span></button>
+          <button class="tab-btn" data-tab="agenda" role="tab" aria-selected="false">Agenda Kerja<span class="cnt">06</span></button>
         </div>
         <button class="acc-toggle-all" id="accToggleAll" data-state="closed">Buka Semua</button>
       </div>
@@ -374,13 +497,26 @@
             </div>
           </div>
 
-        </div>
-      </div>
+          <div class="acc-item">
+            <button class="acc-summary" aria-expanded="false">
+              <div class="acc-head">
+                <span class="acc-code">AGENDA · 06</span>
+                <span class="acc-name">DKV</span>
+                <span class="acc-full script">Desain Komunikasi Visual</span>
+              </div>
+              <span class="acc-plus"></span>
+            </button>
+            <div class="acc-body-wrap">
+              <div class="acc-body-inner">
+                <div class="acc-body">
+                  <p>Seluruh bentuk desain grafis yang ada di Kementerian Minat dan Bakat — seperti feeds Instagram <b>@mikatftunsoed</b>, logo agenda kerja, dan pamflet agenda kerja. DKV merupakan <b>non program/agenda kerja</b>, namun menjadi upaya membangun branding Kementerian Minat dan Bakat BEM FT Unsoed 2026.</p>
+              <div class="acc-chips"><span class="chip">Branding</span><span class="chip">Desain Grafis</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-      <!-- DKV -->
-      <div class="dkv reveal">
-        <div class="dkv-tag">DKV</div>
-        <p>Seluruh bentuk desain grafis yang ada di Kementerian Minat dan Bakat — seperti feeds Instagram <b>@mikatftunsoed</b>, logo agenda kerja, dan pamflet agenda kerja. DKV merupakan <b>non program/agenda kerja</b>, namun menjadi upaya membangun branding Kementerian Minat dan Bakat BEM FT Unsoed 2026.</p>
+        </div>
       </div>
 
     </div>
@@ -388,65 +524,216 @@
 
   <div class="stitch navy reveal"></div>
 
-  <section id="Profil" class="sec">
+  <section id="peminjaman" class="sec">
     <div class="container">
       <div class="sec-head reveal">
         <div>
-          <div class="eyebrow"><span class="stars"><span>★</span><span>★</span><span>★</span></span>Profil</div>
-          <h2 class="sec-title">Struktur Kementerian</h2>
+          <div class="eyebrow"><span class="stars"><span>★</span><span>★</span><span>★</span></span>Fasilitas</div>
+          <h2 class="sec-title">Alur Peminjaman Inventaris</h2>
         </div>
-        <p class="sec-desc">Kemenkoan Pengembangan Mahasiswa (PM) — Kabinet Sagara Cakrawala.</p>
+        <p class="sec-desc">4 langkah mudah meminjam alat/inventaris Kementerian Minat dan Bakat.</p>
       </div>
 
-      <div class="tim-caption reveal">Menteri &amp; Wakil Menteri</div>
-      <div class="org-lead reveal">
-        <div class="person lead" tabindex="0" role="button" data-photo="IMG_6272 (Large).JPG" data-name="Callista Okta Livia" data-role="Menteri">
-          <div class="photo-frame"><img src="IMG_6272 (Large).JPG" alt="Foto Callista Okta Livia" loading="lazy" onerror="this.closest('.photo-frame').classList.add('no-photo')"><span class="avatar-fallback">CO</span><span class="photo-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span></div>
-          <div class="pname">Callista Okta Livia</div><div class="prole">Menteri</div>
+      <div class="loan-flow reveal">
+        <div class="loan-step" style="--i:0">
+          <div class="loan-num">1</div>
+          <div class="loan-body">
+            <div class="loan-title">Ajukan H-1 sebelum peminjaman</div>
+            <p>Peminjaman maksimal dilakukan H-1 dari waktu peminjaman yang direncanakan.</p>
+          </div>
         </div>
-        <div class="person lead" tabindex="0" role="button" data-photo="IMG_6317 (Large).JPG" data-name="Muhammad Raihan Nabil" data-role="Wakil Menteri">
-          <div class="photo-frame"><img src="IMG_6317 (Large).JPG" alt="Foto Muhammad Raihan Nabil" loading="lazy" onerror="this.closest('.photo-frame').classList.add('no-photo')"><span class="avatar-fallback">MR</span><span class="photo-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span></div>
-          <div class="pname">Muhammad Raihan Nabil</div><div class="prole">Wakil Menteri</div>
+        <div class="loan-step" style="--i:1">
+          <div class="loan-num">2</div>
+          <div class="loan-body">
+            <div class="loan-title">Isi formulir &amp; konfirmasi ke CP</div>
+            <p>Setelah mengisi formulir, wajib melakukan konfirmasi melalui CP yang tertera pada formulir.</p>
+          </div>
+        </div>
+        <div class="loan-step" style="--i:2">
+          <div class="loan-num">3</div>
+          <div class="loan-body">
+            <div class="loan-title">Kembalikan tepat waktu</div>
+            <p>Alat wajib dikembalikan tepat waktu sesuai tanggal yang dicantumkan pada formulir.</p>
+          </div>
+        </div>
+        <div class="loan-step" style="--i:3">
+          <div class="loan-num">4</div>
+          <div class="loan-body">
+            <div class="loan-title">Perlu perpanjangan?</div>
+            <p>Jika ingin memperpanjang peminjaman, wajib mengisi formulir dan konfirmasi kembali.</p>
+          </div>
         </div>
       </div>
 
-      <div class="org-connector reveal"></div>
+      <div class="loan-cta reveal">
+        <div class="loan-cta-text">
+          <div class="loan-cta-title">Siap meminjam alat?</div>
+          <p>Hubungi narahubung Kementerian Minat dan Bakat untuk konfirmasi peminjaman.</p>
+        </div>
+        <a class="ticket-chip magnetic" href="https://wa.me/082241183747?text=Halo%20Kak%20Callista%2C%20saya%20ingin%20meminjam%20alat%20inventaris%20Kementerian%20Minat%20dan%20Bakat." target="_blank" rel="noopener">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          Konfirmasi via WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
 
-      <div class="tim-caption staff-caption reveal">Staff Minat dan Bakat</div>
-      <div class="staff-grid reveal">
-        <div class="person" tabindex="0" role="button" data-photo="IMG_6309 (Large).JPG" data-name="Satria Nugraha Surya Putra" data-role="Staff">
-          <div class="photo-frame"><img src="IMG_6309 (Large).JPG" alt="Foto Satria Nugraha Surya Putra" loading="lazy" onerror="this.closest('.photo-frame').classList.add('no-photo')"><span class="avatar-fallback">SN</span><span class="photo-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span></div>
-          <div class="pname">Satria Nugraha Surya Putra</div><div class="prole">Staff</div>
+  <div class="stitch reveal"></div>
+
+  <section id="delegasi" class="sec">
+    <div class="container">
+      <div class="sec-head reveal">
+        <div>
+          <div class="eyebrow"><span class="stars"><span>★</span><span>★</span><span>★</span></span>Delegasi Lomba</div>
+          <h2 class="sec-title">Alur Pengajuan Delegasi Lomba</h2>
         </div>
-        <div class="person" tabindex="0" role="button" data-photo="IMG_6302 (Large).JPG" data-name="Lionny Amanda Karubaba" data-role="Staff">
-          <div class="photo-frame"><img src="IMG_6302 (Large).JPG" alt="Foto Lionny Amanda Karubaba" loading="lazy" onerror="this.closest('.photo-frame').classList.add('no-photo')"><span class="avatar-fallback">LA</span><span class="photo-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span></div>
-          <div class="pname">Lionny Amanda Karubaba</div><div class="prole">Staff</div>
-        </div>
-        <div class="person" tabindex="0" role="button" data-photo="IMG_6299 (Large).JPG" data-name="Khaneswari Putri Pradipta" data-role="Staff">
-          <div class="photo-frame"><img src="IMG_6299 (Large).JPG" alt="Foto Khaneswari Putri Pradipta" loading="lazy" onerror="this.closest('.photo-frame').classList.add('no-photo')"><span class="avatar-fallback">KP</span><span class="photo-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span></div>
-          <div class="pname">Khaneswari Putri Pradipta</div><div class="prole">Staff</div>
-        </div>
-        <div class="person" tabindex="0" role="button" data-photo="IMG_6281 (Large).JPG" data-name="Zahran Febrian Nugraha" data-role="Staff">
-          <div class="photo-frame"><img src="IMG_6281 (Large).JPG" alt="Foto Zahran Febrian Nugraha" loading="lazy" onerror="this.closest('.photo-frame').classList.add('no-photo')"><span class="avatar-fallback">ZF</span><span class="photo-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span></div>
-          <div class="pname">Zahran Febrian Nugraha</div><div class="prole">Staff</div>
-        </div>
-        <div class="person" tabindex="0" role="button" data-photo="IMG_6320 (Large).JPG" data-name="Ratu Alya Al Ghaniyy Susanto" data-role="Staff">
-          <div class="photo-frame"><img src="IMG_6320 (Large).JPG" alt="Foto Ratu Alya Al Ghaniyy Susanto" loading="lazy" onerror="this.closest('.photo-frame').classList.add('no-photo')"><span class="avatar-fallback">RA</span><span class="photo-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span></div>
-          <div class="pname">Ratu Alya Al Ghaniyy Susanto</div><div class="prole">Staff</div>
-        </div>
-        <div class="person" tabindex="0" role="button" data-photo="IMG_6291 (Large).JPG" data-name="Alya Levia Putri" data-role="Staff">
-          <div class="photo-frame"><img src="IMG_6291 (Large).JPG" alt="Foto Alya Levia Putri" loading="lazy" onerror="this.closest('.photo-frame').classList.add('no-photo')"><span class="avatar-fallback">AL</span><span class="photo-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span></div>
-          <div class="pname">Alya Levia Putri</div><div class="prole">Staff</div>
-        </div>
-        <div class="person" tabindex="0" role="button" data-photo="IMG_6306 (Large).JPG" data-name="Hafiz Juninda" data-role="Staff">
-          <div class="photo-frame"><img src="IMG_6306 (Large).JPG" alt="Foto Hafiz Juninda" loading="lazy" onerror="this.closest('.photo-frame').classList.add('no-photo')"><span class="avatar-fallback">HJ</span><span class="photo-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span></div>
-          <div class="pname">Hafiz Juninda</div><div class="prole">Staff</div>
-        </div>
-        <div class="person" tabindex="0" role="button" data-photo="IMG_6296 (Large).JPG" data-name="Lunetta Az-Zahra Kayana Hidayat" data-role="Staff">
-          <div class="photo-frame"><img src="IMG_6296 (Large).JPG" alt="Foto Lunetta Az-Zahra Kayana Hidayat" loading="lazy" onerror="this.closest('.photo-frame').classList.add('no-photo')"><span class="avatar-fallback">LK</span><span class="photo-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span></div>
-          <div class="pname">Lunetta Az-Zahra Kayana Hidayat</div><div class="prole">Staff</div>
+        <p class="sec-desc">Pilih kategori lomba yang kamu ikuti, lalu ikuti langkah-langkahnya. Ketuk tombol template untuk langsung membuka dokumennya.</p>
+      </div>
+
+      <!-- QUICK TEMPLATE ACCESS -->
+      <div class="doc-grid reveal">
+        <a class="doc-card" href="https://docs.google.com/document/d/10wMGx-vd7AxC_5esO0XshWET2pjqe8Wx/edit?usp=drive_link&amp;ouid=104353667038851952193&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">
+          <div class="doc-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/><line x1="9" y1="11" x2="15" y2="11"/></svg></div>
+          <div class="doc-text">
+            <span class="doc-tag">Berbayar</span>
+            <span class="doc-name">Template Pakta Integritas</span>
+          </div>
+          <span class="doc-arrow"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+        </a>
+        <a class="doc-card" href="https://docs.google.com/document/d/1zPtnpGNhIFodnuU5Q8unc4zTwRIBcoyK/edit?usp=drive_link&amp;ouid=104353667038851952193&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">
+          <div class="doc-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/><line x1="9" y1="11" x2="15" y2="11"/></svg></div>
+          <div class="doc-text">
+            <span class="doc-tag">Tidak Berbayar</span>
+            <span class="doc-name">Template Pakta Integritas</span>
+          </div>
+          <span class="doc-arrow"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+        </a>
+        <a class="doc-card" href="https://docs.google.com/document/d/1eww9J7NlwP_jDJ5rt8Us5rLXvPFVetIO/edit?usp=drive_link&amp;ouid=104353667038851952193&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">
+          <div class="doc-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/><line x1="9" y1="11" x2="15" y2="11"/></svg></div>
+          <div class="doc-text">
+            <span class="doc-tag">Proposal</span>
+            <span class="doc-name">Template Pengajuan Delegasi</span>
+          </div>
+          <span class="doc-arrow"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+        </a>
+      </div>
+
+      <!-- FLOW TAB SWITCH -->
+      <div class="tab-bar reveal">
+        <div class="flow-tabs" role="tablist" aria-label="Kategori delegasi lomba">
+          <button class="flow-tab-btn active" data-flow="berbayar" role="tab" aria-selected="true">Lomba Berbayar<span class="cnt">06</span></button>
+          <button class="flow-tab-btn" data-flow="gratis" role="tab" aria-selected="false">Lomba Tidak Berbayar<span class="cnt">03</span></button>
         </div>
       </div>
+
+      <!-- BERBAYAR -->
+      <div class="flow-panel active" id="flow-berbayar" role="tabpanel">
+        <div class="flow-steps">
+          <div class="flow-step">
+            <div class="flow-dot">1</div>
+            <div class="flow-content">
+              <div class="flow-title">Membaca syarat dan ketentuan</div>
+            </div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-dot">2</div>
+            <div class="flow-content">
+              <div class="flow-title">Mengunduh template Pakta Integritas kategori berbayar</div>
+              <a class="flow-link" href="https://docs.google.com/document/d/10wMGx-vd7AxC_5esO0XshWET2pjqe8Wx/edit?usp=drive_link&amp;ouid=104353667038851952193&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">Buka Template Pakta Integritas <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+            </div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-dot">3</div>
+            <div class="flow-content">
+              <div class="flow-title">Mengunduh template proposal pengajuan</div>
+              <a class="flow-link" href="https://docs.google.com/document/d/1eww9J7NlwP_jDJ5rt8Us5rLXvPFVetIO/edit?usp=drive_link&amp;ouid=104353667038851952193&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">Buka Template Proposal <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+            </div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-dot">4</div>
+            <div class="flow-content">
+              <div class="flow-title">Menyusun proposal dan melengkapi Pakta Integritas</div>
+            </div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-dot">5</div>
+            <div class="flow-content">
+              <div class="flow-title">Mengirim proposal dan Pakta Integritas kepada CP yang tertera pada proposal</div>
+            </div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-dot">6</div>
+            <div class="flow-content">
+              <div class="flow-title">Melakukan revisi apabila terdapat masukan dari PJ lomba</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TIDAK BERBAYAR -->
+      <div class="flow-panel" id="flow-gratis" role="tabpanel">
+        <div class="flow-steps">
+          <div class="flow-step">
+            <div class="flow-dot">1</div>
+            <div class="flow-content">
+              <div class="flow-title">Membaca syarat dan ketentuan</div>
+            </div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-dot">2</div>
+            <div class="flow-content">
+              <div class="flow-title">Mengunduh template Pakta Integritas kategori tidak berbayar</div>
+              <a class="flow-link" href="https://docs.google.com/document/d/1zPtnpGNhIFodnuU5Q8unc4zTwRIBcoyK/edit?usp=drive_link&amp;ouid=104353667038851952193&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">Buka Template Pakta Integritas <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+            </div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-dot">3</div>
+            <div class="flow-content">
+              <div class="flow-title">Mengisi dan melengkapi Pakta Integritas sesuai ketentuan yang berlaku</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-block reveal">
+        <div class="faq-title">Pertanyaan Umum</div>
+        <div class="acc faq-acc">
+          <div class="acc-item">
+            <button class="acc-summary" aria-expanded="false">
+              <div class="acc-head"><span class="acc-name faq-q">Apa itu Pakta Integritas?</span></div>
+              <span class="acc-plus"></span>
+            </button>
+            <div class="acc-body-wrap">
+              <div class="acc-body-inner">
+                <div class="acc-body"><p>Pakta Integritas adalah dokumen pernyataan komitmen delegasi yang wajib diisi dan dilampirkan bersama proposal pengajuan, sesuai kategori lomba (berbayar/tidak berbayar) yang diikuti.</p></div>
+              </div>
+            </div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-summary" aria-expanded="false">
+              <div class="acc-head"><span class="acc-name faq-q">Berapa lama proses ACC proposal?</span></div>
+              <span class="acc-plus"></span>
+            </button>
+            <div class="acc-body-wrap">
+              <div class="acc-body-inner">
+                <div class="acc-body"><p>Setelah proposal dan Pakta Integritas dikirim ke CP yang tertera, proses tinjauan akan lebih cepat jika seluruh dokumen sudah lengkap dan sesuai ketentuan. Pantau terus WhatsApp untuk kemungkinan revisi dari PJ lomba.</p></div>
+              </div>
+            </div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-summary" aria-expanded="false">
+              <div class="acc-head"><span class="acc-name faq-q">Apa bedanya lomba berbayar dan tidak berbayar?</span></div>
+              <span class="acc-plus"></span>
+            </button>
+            <div class="acc-body-wrap">
+              <div class="acc-body-inner">
+                <div class="acc-body"><p>Keduanya menggunakan alur pengajuan yang serupa, namun template Pakta Integritas yang digunakan berbeda sesuai kategori lomba yang diikuti, pastikan mengunduh template yang sesuai.</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 </main>
@@ -469,28 +756,33 @@
         <div class="foot-col">
           <h4>Kontak</h4>
           <ul>
-            <li><button class="copy-btn" id="copyEmail" data-copy="kementerianmikatbemft2026@gmail.com">kementerianmikatbemft2026@gmail.com<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button></li>
+            <li><button class="copy-btn" id="copyEmail" data-copy="kementerianmikatbemft2026@gmail.com">kementerianmikatbemft2026@gmail.com<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button></li>
             <li>Narahubung: 082241183747 (Callista)</li>
+            <li><button class="copy-btn" id="saveContact">Simpan Kontak<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg></button></li>
           </ul>
         </div>
         <div class="foot-col">
           <h4>Jelajah</h4>
           <ul>
-            <li><a href="#tentang">Tentang</a></li>
+            <li><a href="#profil">Profil</a></li>
+            <li><a href="#galeri">Galeri</a></li>
+            <li><a href="#tentang">Visi &amp; Misi</a></li>
             <li><a href="#proker">Program Kerja</a></li>
-            <li><a href="#Profil">Profil</a></li>
+            <li><a href="#peminjaman">Peminjaman Alat</a></li>
+            <li><a href="#delegasi">Delegasi Lomba</a></li>
           </ul>
         </div>
         <div class="foot-col">
           <h4>Media Sosial</h4>
           <ul>
-            <li><a href="#">Instagram @mikatftunsoed</a></li>
-            <li><a href="#">TikTok @bemftunsoed</a></li>
+            <li><a href="https://www.instagram.com/mikatftunsoed" target="_blank" rel="noopener">Instagram @mikatftunsoed</a></li>
+            <li><a href="https://www.tiktok.com/@bemftunsoed" target="_blank" rel="noopener">TikTok @bemftunsoed</a></li>
+            <li><a href="https://www.instagram.com/mikatftunsoed" target="_blank" rel="noopener">Info Lomba — Techno Talent Hub</a></li>
           </ul>
         </div>
       </div>
     </div>
-    <div class="foot-bottom">Kementerian Minat dan Bakat — Kabinet Sagara Cakrawala — BEM FT Unsoed 2026</div>
+    <div class="foot-bottom">Kementerian Minat dan Bakat — Kabinet Sagara Cakra la — BEM FT Unsoed 2026</div>
   </div>
 </footer>
 
@@ -542,6 +834,30 @@
     });
   }
 
+  // ---- Save contact as vCard (.vcf) ----
+  const saveContact = document.getElementById('saveContact');
+  if (saveContact){
+    saveContact.addEventListener('click', () => {
+      const vcard = [
+        'BEGIN:VCARD',
+        'VERSION:3.0',
+        'FN:Kementerian Minat dan Bakat BEM FT Unsoed',
+        'ORG:BEM FT Unsoed',
+        'TEL;TYPE=CELL:+6282241183747',
+        'EMAIL:kementerianmikatbemft2026@gmail.com',
+        'ADR:;;Jl. Raya Mayjen Sungkono No. KM 5, Dusun 2, Blater, Kec. Kalimanah;Purbalingga;Jawa Tengah;53371;Indonesia',
+        'END:VCARD'
+      ].join('\r\n');
+      const blob = new Blob([vcard], { type: 'text/vcard' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'Kontak-Mikat-BEM-FT-Unsoed.vcf';
+      document.body.appendChild(a); a.click(); a.remove();
+      URL.revokeObjectURL(url);
+      showToast('Kontak berhasil diunduh');
+    });
+  }
+
   // ---- Scroll cue: click hero to jump to next section ----
   const scrollCue = document.getElementById('scrollCue');
   if (scrollCue){
@@ -557,6 +873,7 @@
   // ---- Nav scroll shadow + scroll progress bar + to-top visibility ----
   const nav = document.getElementById('siteNav');
   const progressBar = document.getElementById('scrollProgress');
+  const scrollBall = document.getElementById('scrollBall');
   const railNav = document.getElementById('railNav');
   const onScroll = () => {
     const y = window.scrollY;
@@ -566,6 +883,7 @@
     const h = document.documentElement;
     const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
     progressBar.style.width = scrolled + '%';
+    if (scrollBall) scrollBall.style.left = scrolled + '%';
   };
   document.addEventListener('scroll', onScroll, { passive:true });
   onScroll();
@@ -670,7 +988,7 @@
   }
 
   // ---- Gentle 3D tilt on interactive cards ----
-  const tiltEls = document.querySelectorAll('.misi-card, .person, .dkv');
+  const tiltEls = document.querySelectorAll('.misi-card, .person, .doc-card');
   if (!reduceMotion && window.matchMedia('(hover: hover)').matches){
     tiltEls.forEach(el => {
       el.style.transformStyle = 'preserve-3d';
@@ -705,6 +1023,30 @@
       e.preventDefault();
       const next = tabBtns[(i + (e.key === 'ArrowRight' ? 1 : -1) + tabBtns.length) % tabBtns.length];
       next.focus(); activateTab(next);
+    });
+  });
+
+  // ---- Delegasi Lomba flow tab switch (Berbayar / Tidak Berbayar) ----
+  const flowBtns = Array.from(document.querySelectorAll('.flow-tab-btn'));
+  const flowPanels = { berbayar: document.getElementById('flow-berbayar'), gratis: document.getElementById('flow-gratis') };
+  function activateFlow(btn){
+    flowBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); b.tabIndex = -1; });
+    btn.classList.add('active'); btn.setAttribute('aria-selected','true'); btn.tabIndex = 0;
+    const target = flowPanels[btn.dataset.flow];
+    Object.values(flowPanels).forEach(p => { if (p !== target) p.classList.remove('active'); });
+    target.classList.add('switching');
+    requestAnimationFrame(() => {
+      target.classList.add('active');
+      requestAnimationFrame(() => target.classList.remove('switching'));
+    });
+  }
+  flowBtns.forEach((btn, i) => {
+    btn.addEventListener('click', () => activateFlow(btn));
+    btn.addEventListener('keydown', (e) => {
+      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+      e.preventDefault();
+      const next = flowBtns[(i + (e.key === 'ArrowRight' ? 1 : -1) + flowBtns.length) % flowBtns.length];
+      next.focus(); activateFlow(next);
     });
   });
 
