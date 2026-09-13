@@ -729,7 +729,11 @@ body.locked{ overflow:hidden; height:100vh; }
 }
 .loan-cta-title{ font-family:'Anton',sans-serif; font-size:22px; letter-spacing:.3px; margin-bottom:4px; }
 .loan-cta p{ font-size:13.5px; color:rgba(244,234,211,.75); max-width:360px; }
-@media(max-width:600px){ .loan-cta{ flex-direction:column; align-items:flex-start; } }
+.loan-cta-actions{ display:flex; flex-direction:column; gap:12px; }
+.loan-cta-actions .ticket-chip{ justify-content:center; }
+.loan-cta-actions .ticket-chip.outline{ border-color:var(--cream); color:var(--cream); }
+.loan-cta-actions .ticket-chip.outline:hover{ background:var(--cream); color:var(--navy); }
+@media(max-width:600px){ .loan-cta{ flex-direction:column; align-items:flex-start; } .loan-cta-actions{ width:100%; } }
 
 /* ==========================================================
    DOC GRID — quick-access template/document cards
