@@ -106,6 +106,7 @@ export default function DelegasiPage() {
           </div>
 
           <div
+            className="delegasi-card"
             style={{
               background: 'var(--cream-soft)',
               border: '2px solid var(--line)',

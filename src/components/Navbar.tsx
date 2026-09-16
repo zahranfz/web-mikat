@@ -8,14 +8,42 @@ import { Menu, X, Shield, PhoneCall } from 'lucide-react';
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('top');
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    const sections = ['profil', 'galeri', 'tentang', 'proker', 'peminjaman', 'delegasi']
+      .map((id) => document.getElementById(id))
+      .filter((section): section is HTMLElement => Boolean(section));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible) setActiveSection(visible.target.id);
+      },
+      { rootMargin: '-25% 0px -60% 0px', threshold: [0.1, 0.3, 0.6] }
+    );
+    sections.forEach((section) => observer.observe(section));
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setMobileMenuOpen(false);
+    };
+    window.addEventListener('keydown', handleEscape);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('keydown', handleEscape);
+      observer.disconnect();
+    };
   }, []);
+
+  const closeMobileMenu = () => setMobileMenuOpen(false);
+  const isActive = (section: string) => activeSection === section;
 
   return (
     <nav id="siteNav" className={isScrolled ? 'scrolled' : ''}>
@@ -42,12 +70,12 @@ export default function Navbar() {
           </Link>
 
           <ul className="nav-links">
-            <li><a href="/#profil">Profil</a></li>
-            <li><a href="/#galeri">Galeri</a></li>
-            <li><a href="/#tentang">Visi &amp; Misi</a></li>
-            <li><a href="/#proker">Proker</a></li>
-            <li><a href="/#peminjaman">Peminjaman</a></li>
-            <li><a href="/#delegasi">Delegasi</a></li>
+            <li><a className={isActive('profil') ? 'active' : ''} href="/#profil">Profil</a></li>
+            <li><a className={isActive('galeri') ? 'active' : ''} href="/#galeri">Galeri</a></li>
+            <li><a className={isActive('tentang') ? 'active' : ''} href="/#tentang">Visi &amp; Misi</a></li>
+            <li><a className={isActive('proker') ? 'active' : ''} href="/#proker">Proker</a></li>
+            <li><a className={isActive('peminjaman') ? 'active' : ''} href="/#peminjaman">Peminjaman</a></li>
+            <li><a className={isActive('delegasi') ? 'active' : ''} href="/#delegasi">Delegasi</a></li>
           </ul>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -63,6 +91,7 @@ export default function Navbar() {
               className="menu-btn"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Menu navigasi"
+              aria-expanded={mobileMenuOpen}
             >
               {mobileMenuOpen ? <X size={22} color="#16214A" /> : <Menu size={22} color="#16214A" />}
             </button>
@@ -72,13 +101,13 @@ export default function Navbar() {
 
       {mobileMenuOpen && (
         <div className="mobile-menu open">
-          <a href="/#profil" onClick={() => setMobileMenuOpen(false)}>Profil</a>
-          <a href="/#galeri" onClick={() => setMobileMenuOpen(false)}>Galeri</a>
-          <a href="/#tentang" onClick={() => setMobileMenuOpen(false)}>Visi &amp; Misi</a>
-          <a href="/#proker" onClick={() => setMobileMenuOpen(false)}>Program &amp; Agenda</a>
-          <a href="/#peminjaman" onClick={() => setMobileMenuOpen(false)}>Peminjaman Alat</a>
-          <a href="/#delegasi" onClick={() => setMobileMenuOpen(false)}>Delegasi Lomba</a>
-          <Link href="/admin" onClick={() => setMobileMenuOpen(false)} style={{ color: 'var(--gold)' }}>
+          <a href="/#profil" onClick={closeMobileMenu}>Profil</a>
+          <a href="/#galeri" onClick={closeMobileMenu}>Galeri</a>
+          <a href="/#tentang" onClick={closeMobileMenu}>Visi &amp; Misi</a>
+          <a href="/#proker" onClick={closeMobileMenu}>Program &amp; Agenda</a>
+          <a href="/#peminjaman" onClick={closeMobileMenu}>Peminjaman Alat</a>
+          <a href="/#delegasi" onClick={closeMobileMenu}>Delegasi Lomba</a>
+          <Link href="/admin" onClick={closeMobileMenu} style={{ color: 'var(--gold)' }}>
             Panel Admin
           </Link>
         </div>

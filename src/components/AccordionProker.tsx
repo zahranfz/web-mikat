@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { ChevronDown, ChevronsUpDown } from 'lucide-react';
 import { ProkerItem } from '@/lib/initialData';
 
 interface AccordionProkerProps {
@@ -37,14 +38,18 @@ export default function AccordionProker({ items }: AccordionProkerProps) {
   return (
     <div>
       <div className="tab-bar">
-        <div className="tab-switch" role="tablist">
+        <div className="tab-switch" role="tablist" aria-label="Jenis kegiatan">
           <button
+            role="tab"
+            aria-selected={activeTab === 'proker'}
             className={`tab-btn ${activeTab === 'proker' ? 'active' : ''}`}
             onClick={() => setActiveTab('proker')}
           >
             Program Kerja<span className="cnt">{prokers.length.toString().padStart(2, '0')}</span>
           </button>
           <button
+            role="tab"
+            aria-selected={activeTab === 'agenda'}
             className={`tab-btn ${activeTab === 'agenda' ? 'active' : ''}`}
             onClick={() => setActiveTab('agenda')}
           >
@@ -52,8 +57,9 @@ export default function AccordionProker({ items }: AccordionProkerProps) {
           </button>
         </div>
 
-        <button className="acc-toggle-all" onClick={toggleAll}>
-          {isAllOpen ? 'Tutup Semua' : 'Buka Semua'}
+        <button className="acc-toggle-all" onClick={toggleAll} aria-label={isAllOpen ? 'Tutup semua kegiatan' : 'Buka semua kegiatan'}>
+          <ChevronsUpDown size={15} />
+          <span>{isAllOpen ? 'Tutup semua' : 'Buka semua'}</span>
         </button>
       </div>
 
@@ -66,17 +72,18 @@ export default function AccordionProker({ items }: AccordionProkerProps) {
                 className="acc-summary"
                 onClick={() => toggleItem(item.id)}
                 aria-expanded={isOpen}
+                aria-controls={`detail-${item.id}`}
               >
                 <div className="acc-head">
                   <span className="acc-code">{item.code}</span>
                   <span className="acc-name">{item.nama}</span>
                   {item.subtitle && <span className="acc-full script">{item.subtitle}</span>}
                 </div>
-                <span className="acc-plus">{isOpen ? '−' : '+'}</span>
+                <span className="acc-plus"><ChevronDown size={18} /></span>
               </button>
 
               {isOpen && (
-                <div className="acc-body">
+                <div className="acc-body" id={`detail-${item.id}`}>
                   <p>{item.deskripsi}</p>
                   {item.chips && item.chips.length > 0 && (
                     <div className="acc-chips">

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import ScrollEffects from '@/components/ScrollEffects';
 
 export const metadata: Metadata = {
   title: 'Kementerian Minat dan Bakat — BEM FT Unsoed',
@@ -19,6 +20,7 @@ export default function RootLayout({
     <html lang="id">
       <body>
         <div className="scroll-progress" id="scrollProgress"></div>
+        <ScrollEffects />
         {children}
       </body>
     </html>

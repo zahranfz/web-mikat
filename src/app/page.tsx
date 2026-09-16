@@ -167,13 +167,19 @@ export default function HomePage() {
 
             <div className="about-lead">
               <p>
-                Kementerian Minat dan Bakat BEM FT Unsoed hadir untuk mewujudkan optimalisasi aktivitas mahasiswa Teknik berdasarkan potensi minat dan bakat yang berkembang di lingkungan fakultas — dari lapangan olahraga hingga panggung kreasi seni.
+                Kementerian Minat dan Bakat BEM FT Unsoed hadir untuk mengoptimalkan potensi mahasiswa Teknik dalam mengembangkan minat dan bakat di lingkungan fakultas — mulai dari aktivitas olahraga hingga ruang kreativitas seni.
               </p>
             </div>
 
             <div className="profile-divider"><span></span></div>
 
-            <h3 className="team-heading">Struktur Kementerian</h3>
+            <div className="team-heading-wrap">
+              <div className="eyebrow team-eyebrow">
+                <span className="stars"><span>★</span><span>★</span><span>★</span></span>
+                Struktur Kementerian
+              </div>
+              <h3 className="team-heading">Struktur Kementerian</h3>
+            </div>
 
             {/* Menteri & Wamen */}
             <div className="tim-caption">Menteri &amp; Wakil Menteri</div>
@@ -289,7 +295,10 @@ export default function HomePage() {
                   <div className="gallery-frame">
                     <img src={item.url} alt={item.label} />
                   </div>
-                  <div className="gallery-cap">{item.label}</div>
+                  <div className="gallery-cap">
+                    <span className="gallery-index">0{index + 1}</span>
+                    <span>{item.label}</span>
+                  </div>
                 </div>
               ))}
             </div>
