@@ -12,6 +12,7 @@ export default function DelegasiPage() {
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [turnstileToken, setTurnstileToken] = useState('');
+  const [activeFlow, setActiveFlow] = useState<'berbayar' | 'gratis'>('berbayar');
   const [formData, setFormData] = useState({
     nama_ketua: '',
     nim: '',
@@ -102,6 +103,145 @@ export default function DelegasiPage() {
                 <FileDown size={18} color="var(--gold)" />
                 <span style={{ fontSize: '12.5px', fontWeight: 600, color: 'var(--navy)' }}>Template Proposal</span>
               </a>
+            </div>
+          </div>
+
+          {/* ====== ALUR DELEGASI ====== */}
+          <div style={{ marginBottom: '32px' }}>
+            <h2
+              style={{
+                fontFamily: 'Anton',
+                fontSize: '24px',
+                color: 'var(--navy)',
+                letterSpacing: '.3px',
+                marginBottom: '6px',
+              }}
+            >
+              Alur Pengajuan Delegasi Lomba
+            </h2>
+            <p style={{ fontSize: '13.5px', color: 'var(--ink-soft)', lineHeight: 1.6, marginBottom: '20px' }}>
+              Pilih kategori lomba yang kamu ikuti, lalu ikuti langkah-langkahnya.
+            </p>
+
+            {/* Tab Switch */}
+            <div style={{ marginBottom: '24px' }}>
+              <div className="flow-tabs" role="tablist" aria-label="Kategori delegasi lomba">
+                <button
+                  className={`flow-tab-btn${activeFlow === 'berbayar' ? ' active' : ''}`}
+                  onClick={() => setActiveFlow('berbayar')}
+                  role="tab"
+                  aria-selected={activeFlow === 'berbayar'}
+                >
+                  Lomba Berbayar<span className="cnt">06</span>
+                </button>
+                <button
+                  className={`flow-tab-btn${activeFlow === 'gratis' ? ' active' : ''}`}
+                  onClick={() => setActiveFlow('gratis')}
+                  role="tab"
+                  aria-selected={activeFlow === 'gratis'}
+                >
+                  Lomba Tidak Berbayar<span className="cnt">03</span>
+                </button>
+              </div>
+            </div>
+
+            {/* BERBAYAR Panel */}
+            <div
+              className={`flow-panel${activeFlow === 'berbayar' ? ' active' : ''}`}
+              role="tabpanel"
+            >
+              <div className="flow-steps">
+                <div className="flow-step">
+                  <div className="flow-dot">1</div>
+                  <div className="flow-content">
+                    <div className="flow-title">Membaca syarat dan ketentuan</div>
+                  </div>
+                </div>
+                <div className="flow-step">
+                  <div className="flow-dot">2</div>
+                  <div className="flow-content">
+                    <div className="flow-title">Mengunduh template Pakta Integritas kategori berbayar</div>
+                    <a
+                      className="flow-link"
+                      href="https://docs.google.com/document/d/10wMGx-vd7AxC_5esO0XshWET2pjqe8Wx/edit"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Buka Template Pakta Integritas
+                      <ArrowUpRight size={13} />
+                    </a>
+                  </div>
+                </div>
+                <div className="flow-step">
+                  <div className="flow-dot">3</div>
+                  <div className="flow-content">
+                    <div className="flow-title">Mengunduh template proposal pengajuan</div>
+                    <a
+                      className="flow-link"
+                      href="https://docs.google.com/document/d/1eww9J7NlwP_jDJ5rt8Us5rLXvPFVetIO/edit"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Buka Template Proposal
+                      <ArrowUpRight size={13} />
+                    </a>
+                  </div>
+                </div>
+                <div className="flow-step">
+                  <div className="flow-dot">4</div>
+                  <div className="flow-content">
+                    <div className="flow-title">Menyusun proposal dan melengkapi Pakta Integritas</div>
+                  </div>
+                </div>
+                <div className="flow-step">
+                  <div className="flow-dot">5</div>
+                  <div className="flow-content">
+                    <div className="flow-title">Mengirim proposal dan Pakta Integritas kepada CP yang tertera pada proposal</div>
+                  </div>
+                </div>
+                <div className="flow-step">
+                  <div className="flow-dot">6</div>
+                  <div className="flow-content">
+                    <div className="flow-title">Melakukan revisi apabila terdapat masukan dari PJ lomba</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* TIDAK BERBAYAR Panel */}
+            <div
+              className={`flow-panel${activeFlow === 'gratis' ? ' active' : ''}`}
+              role="tabpanel"
+            >
+              <div className="flow-steps">
+                <div className="flow-step">
+                  <div className="flow-dot">1</div>
+                  <div className="flow-content">
+                    <div className="flow-title">Membaca syarat dan ketentuan</div>
+                  </div>
+                </div>
+                <div className="flow-step">
+                  <div className="flow-dot">2</div>
+                  <div className="flow-content">
+                    <div className="flow-title">Mengunduh template Pakta Integritas kategori tidak berbayar</div>
+                    <a
+                      className="flow-link"
+                      href="https://docs.google.com/document/d/1zPtnpGNhIFodnuU5Q8unc4zTwRIBcoyK/edit"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Buka Template Pakta Integritas
+                      <ArrowUpRight size={13} />
+                    </a>
+                  </div>
+                </div>
+                <div className="flow-step">
+                  <div className="flow-dot">3</div>
+                  <div className="flow-content">
+                    <div className="flow-title">Mengisi dan melengkapi Pakta Integritas sesuai ketentuan yang berlaku</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
