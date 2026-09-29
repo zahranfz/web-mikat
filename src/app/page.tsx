@@ -34,6 +34,7 @@ export default function HomePage() {
   const [galleryImages, setGalleryImages] = useState<Array<{ url: string; label: string }>>([]);
   const [isLoanModalOpen, setIsLoanModalOpen] = useState(false);
   const [isDelegationModalOpen, setIsDelegationModalOpen] = useState(false);
+  const [activeFlow, setActiveFlow] = useState<'berbayar' | 'gratis'>('berbayar');
   const [selectedPhoto, setSelectedPhoto] = useState<{
     name: string;
     role: string;
@@ -517,7 +518,132 @@ export default function HomePage() {
               </a>
             </div>
 
-            <div style={{ textAlign: 'center', marginTop: '16px' }}>
+            {/* FLOW TAB SWITCH */}
+            <div className="tab-bar" style={{ marginTop: '36px' }}>
+              <div className="flow-tabs" role="tablist" aria-label="Kategori delegasi lomba">
+                <button
+                  className={`flow-tab-btn${activeFlow === 'berbayar' ? ' active' : ''}`}
+                  onClick={() => setActiveFlow('berbayar')}
+                  role="tab"
+                  aria-selected={activeFlow === 'berbayar'}
+                >
+                  Lomba Berbayar<span className="cnt">06</span>
+                </button>
+                <button
+                  className={`flow-tab-btn${activeFlow === 'gratis' ? ' active' : ''}`}
+                  onClick={() => setActiveFlow('gratis')}
+                  role="tab"
+                  aria-selected={activeFlow === 'gratis'}
+                >
+                  Lomba Tidak Berbayar<span className="cnt">03</span>
+                </button>
+              </div>
+            </div>
+
+            {/* BERBAYAR */}
+            <div
+              className={`flow-panel${activeFlow === 'berbayar' ? ' active' : ''}`}
+              id="flow-berbayar"
+              role="tabpanel"
+              style={{ marginTop: '24px' }}
+            >
+              <div className="flow-steps">
+                <div className="flow-step">
+                  <div className="flow-dot">1</div>
+                  <div className="flow-content">
+                    <div className="flow-title">Membaca syarat dan ketentuan</div>
+                  </div>
+                </div>
+                <div className="flow-step">
+                  <div className="flow-dot">2</div>
+                  <div className="flow-content">
+                    <div className="flow-title">Mengunduh template Pakta Integritas kategori berbayar</div>
+                    <a
+                      className="flow-link"
+                      href="https://docs.google.com/document/d/10wMGx-vd7AxC_5esO0XshWET2pjqe8Wx/edit"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Buka Template Pakta Integritas
+                      <ArrowUpRight size={13} />
+                    </a>
+                  </div>
+                </div>
+                <div className="flow-step">
+                  <div className="flow-dot">3</div>
+                  <div className="flow-content">
+                    <div className="flow-title">Mengunduh template proposal pengajuan</div>
+                    <a
+                      className="flow-link"
+                      href="https://docs.google.com/document/d/1eww9J7NlwP_jDJ5rt8Us5rLXvPFVetIO/edit"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Buka Template Proposal
+                      <ArrowUpRight size={13} />
+                    </a>
+                  </div>
+                </div>
+                <div className="flow-step">
+                  <div className="flow-dot">4</div>
+                  <div className="flow-content">
+                    <div className="flow-title">Menyusun proposal dan melengkapi Pakta Integritas</div>
+                  </div>
+                </div>
+                <div className="flow-step">
+                  <div className="flow-dot">5</div>
+                  <div className="flow-content">
+                    <div className="flow-title">Mengirim proposal dan Pakta Integritas kepada CP yang tertera pada proposal</div>
+                  </div>
+                </div>
+                <div className="flow-step">
+                  <div className="flow-dot">6</div>
+                  <div className="flow-content">
+                    <div className="flow-title">Melakukan revisi apabila terdapat masukan dari PJ lomba</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* TIDAK BERBAYAR */}
+            <div
+              className={`flow-panel${activeFlow === 'gratis' ? ' active' : ''}`}
+              id="flow-gratis"
+              role="tabpanel"
+              style={{ marginTop: '24px' }}
+            >
+              <div className="flow-steps">
+                <div className="flow-step">
+                  <div className="flow-dot">1</div>
+                  <div className="flow-content">
+                    <div className="flow-title">Membaca syarat dan ketentuan</div>
+                  </div>
+                </div>
+                <div className="flow-step">
+                  <div className="flow-dot">2</div>
+                  <div className="flow-content">
+                    <div className="flow-title">Mengunduh template Pakta Integritas kategori tidak berbayar</div>
+                    <a
+                      className="flow-link"
+                      href="https://docs.google.com/document/d/1zPtnpGNhIFodnuU5Q8unc4zTwRIBcoyK/edit"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Buka Template Pakta Integritas
+                      <ArrowUpRight size={13} />
+                    </a>
+                  </div>
+                </div>
+                <div className="flow-step">
+                  <div className="flow-dot">3</div>
+                  <div className="flow-content">
+                    <div className="flow-title">Mengisi dan melengkapi Pakta Integritas sesuai ketentuan yang berlaku</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div style={{ textAlign: 'center', marginTop: '36px' }}>
               <button
                 onClick={() => setIsDelegationModalOpen(true)}
                 className="btn-pill primary"
