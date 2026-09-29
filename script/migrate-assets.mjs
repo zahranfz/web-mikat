@@ -101,23 +101,23 @@ async function main() {
   });
   if (bucketError) {
     if (bucketError.message.includes('already exists')) {
-      console.log(`ℹ️ Bucket '${BUCKET_NAME}' sudah ada.`);
+      console.log(`Bucket '${BUCKET_NAME}' sudah ada.`);
     } else {
-      console.warn(`⚠️ Perhatian pembuatan bucket: ${bucketError.message}`);
-      console.warn(`👉 Jika bucket '${BUCKET_NAME}' belum ada, silakan buat di menu Storage dashboard Supabase dan centang "Public bucket".\n`);
+      console.warn(`Perhatian pembuatan bucket: ${bucketError.message}`);
+      console.warn(`Jika bucket '${BUCKET_NAME}' belum ada, silakan buat di menu Storage dashboard Supabase dan centang "Public bucket".\n`);
     }
   } else {
-    console.log(`✨ Bucket '${BUCKET_NAME}' berhasil dibuat secara otomatis!`);
+    console.log(` Bucket '${BUCKET_NAME}' berhasil dibuat secara otomatis!`);
   }
 
   const assetsDir = path.join(rootDir, 'public', 'assets');
   if (!fs.existsSync(assetsDir)) {
-    console.error('❌ Direktori public/assets tidak ditemukan!');
+    console.error(' Direktori public/assets tidak ditemukan!');
     process.exit(1);
   }
 
   const files = fs.readdirSync(assetsDir);
-  console.log(`📁 Ditemukan ${files.length} file di public/assets.\n`);
+  console.log(` Ditemukan ${files.length} file di public/assets.\n`);
 
   const uploadedUrls = {}; // localFileName -> publicUrl
 
@@ -150,7 +150,7 @@ async function main() {
       });
 
     if (error) {
-      console.log(`❌ Gagal: ${error.message}`);
+      console.log(`Gagal: ${error.message}`);
     } else {
       const { data } = supabase.storage.from(BUCKET_NAME).getPublicUrl(storagePath);
       uploadedUrls[file] = data.publicUrl;
