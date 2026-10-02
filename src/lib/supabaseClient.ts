@@ -678,3 +678,23 @@ export async function deleteForm(id: string) {
   return true;
 }
 
+
+export async function uploadImageToSupabase(file: File): Promise<string | null> {
+  if (!isSupabaseConfigured || !supabase) return null;
+  try {
+    const fileExt = file.name.split('.').pop();
+    const fileName = `${Math.random()}.${fileExt}`;
+    const filePath = `headers/${fileName}`;
+    const { error: uploadError } = await supabase.storage.from('mikat_images').upload(filePath, file);
+    if (uploadError) {
+      console.error('Error uploading image:', uploadError.message);
+      return null;
+    }
+    const { data } = supabase.storage.from('mikat_images').getPublicUrl(filePath);
+    return data.publicUrl;
+  } catch (err) {
+    console.error('Error:', err);
+    return null;
+  }
+}
+

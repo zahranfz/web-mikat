@@ -1,13 +1,14 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { fetchForms, addForm, deleteForm } from '@/lib/supabaseClient';
-import { Plus, ListChecks, Link, X, Settings2, ArrowRight, Trash2, GripVertical, Type, AlignLeft, ChevronDown, CheckSquare, Image as ImageIcon } from 'lucide-react';
+import { fetchForms, addForm, deleteForm, uploadImageToSupabase } from '@/lib/supabaseClient';
+import { Plus, ListChecks, Link, X, Settings2, ArrowRight, Trash2, GripVertical, Type, AlignLeft, ChevronDown, CheckSquare, Image as ImageIcon, Loader2 } from 'lucide-react';
 import NextLink from 'next/link';
 
 export default function AdminFormsPage() {
   const [forms, setForms] = useState<any[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [uploadingHeader, setUploadingHeader] = useState(false);
   
   const defaultField = () => ({ id: 'f_' + Math.random().toString(36).substr(2, 9), label: 'Pertanyaan Tanpa Judul', type: 'text', required: false, options: ['Opsi 1'] });
   
@@ -236,15 +237,42 @@ export default function AdminFormsPage() {
                 </div>
                 <div className="form-group full" style={{ marginBottom: '0' }}>
                   <label className="form-label" style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <ImageIcon size={14} /> Link Header Gambar (Opsional)
+                    <ImageIcon size={14} /> Upload Gambar Header (Opsional)
                   </label>
-                  <input
-                    type="url"
-                    className="form-input"
-                    placeholder="https://gdrive/..."
-                    value={newForm.cover_image}
-                    onChange={e => setNewForm({ ...newForm, cover_image: e.target.value })}
-                  />
+                  {newForm.cover_image ? (
+                    <div style={{ position: 'relative', height: '120px', borderRadius: '8px', background: `url(${newForm.cover_image}) center/cover`, border: '1px solid #CBD5E1' }}>
+                      <button 
+                        type="button" 
+                        onClick={() => setNewForm({ ...newForm, cover_image: '' })} 
+                        style={{ position: 'absolute', top: '8px', right: '8px', background: '#fff', border: 'none', borderRadius: '50%', padding: '4px', cursor: 'pointer', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}
+                      >
+                        <X size={14} color="var(--red)" />
+                      </button>
+                    </div>
+                  ) : (
+                    <div style={{ position: 'relative', display: 'flex', alignItems: 'center', gap: '12px' }}>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        className="form-input"
+                        disabled={uploadingHeader}
+                        onChange={async (e) => {
+                          const file = e.target.files?.[0];
+                          if (file) {
+                            setUploadingHeader(true);
+                            const url = await uploadImageToSupabase(file);
+                            if (url) {
+                              setNewForm({ ...newForm, cover_image: url });
+                            } else {
+                              alert('Gagal mengupload gambar. Pastikan Anda telah membuat bucket "mikat_images" di Supabase.');
+                            }
+                            setUploadingHeader(false);
+                          }
+                        }}
+                      />
+                      {uploadingHeader && <Loader2 className="spinner" size={20} color="var(--navy)" />}
+                    </div>
+                  )}
                 </div>
               </div>
 
