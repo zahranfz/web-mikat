@@ -16,9 +16,9 @@ import {
   XCircle,
   Clock,
   Search,
-  RotateCcw,
   CheckCheck,
   X,
+  Download,
 } from 'lucide-react';
 
 export default function AdminPeminjamanPage() {
@@ -41,6 +41,26 @@ export default function AdminPeminjamanPage() {
   const loadData = async () => {
     const data = await fetchPeminjaman();
     setLoans(data);
+  };
+
+  const generateReport = () => {
+    const headers = ['Nama Peminjam', 'NIM', 'Jurusan', 'Nama Alat', 'Jumlah', 'Keperluan', 'Status', 'Nomor WA', 'Tanggal Pinjam', 'Tanggal Kembali'];
+    const csvContent = loans.map(d => 
+      [
+        `"${d.nama_peminjam}"`, `"${d.nim}"`, `"${d.jurusan}"`, `"${d.nama_alat}"`, 
+        `"${d.jumlah}"`, `"${d.keperluan}"`, `"${d.status}"`, 
+        `"${d.no_wa}"`, `"${d.tanggal_pinjam}"`, `"${d.tanggal_kembali}"`
+      ].join(',')
+    );
+    const csvStr = [headers.join(','), ...csvContent].join('\n');
+    const blob = new Blob([csvStr], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.setAttribute('href', url);
+    link.setAttribute('download', `Laporan_Peminjaman_Mikat_${new Date().toISOString().slice(0,10)}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   useEffect(() => {
@@ -109,10 +129,16 @@ export default function AdminPeminjamanPage() {
           </p>
         </div>
 
-        <button className="btn-pill primary" onClick={() => setIsAddModalOpen(true)}>
-          <Plus size={16} />
-          <span>Tambah Peminjaman Manual</span>
-        </button>
+        <div style={{ display: 'flex', gap: '12px' }}>
+          <button className="btn-pill outline" onClick={generateReport} style={{ borderColor: '#CBD5E1', color: 'var(--navy)' }}>
+            <Download size={16} />
+            <span style={{ fontSize: '13px' }}>Generate Laporan</span>
+          </button>
+          <button className="btn-pill primary" onClick={() => setIsAddModalOpen(true)}>
+            <Plus size={16} />
+            <span style={{ fontSize: '13px' }}>Input Manual</span>
+          </button>
+        </div>
       </div>
 
       <div className="admin-card">

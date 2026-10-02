@@ -429,6 +429,10 @@ nav#siteNav {
   transform: translateY(-1px);
 }
 
+.nav-cta:active {
+  transform: scale(0.95);
+}
+
 .nav-admin-btn {
   font-size: 12px;
   font-weight: 700;
@@ -448,6 +452,10 @@ nav#siteNav {
   background: var(--navy-deep);
   color: #fff;
   transform: translateY(-1px);
+}
+
+.nav-admin-btn:active {
+  transform: scale(0.95);
 }
 
 .menu-btn {
@@ -1395,8 +1403,12 @@ nav#siteNav {
   padding: 10px 20px;
   border-radius: 30px;
   cursor: pointer;
-  transition: all .2s;
+  transition: all .2s cubic-bezier(0.16, 1, 0.3, 1);
   border: none;
+}
+
+.btn-pill:active {
+  transform: scale(0.95);
 }
 
 .btn-pill.primary {
@@ -1404,9 +1416,23 @@ nav#siteNav {
   color: var(--cream);
 }
 
-.btn-pill.primary:hover {
+.btn-pill.primary:hover:not(:disabled) {
   background: var(--red-deep);
   transform: translateY(-2px);
+}
+
+.btn-pill:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 .btn-pill.secondary {
@@ -1452,8 +1478,12 @@ nav#siteNav {
   border: 1.5px solid var(--line);
   border-radius: 12px;
   padding: 16px 18px;
-  transition: all .25s var(--ease);
+  transition: all .2s cubic-bezier(0.16, 1, 0.3, 1);
   min-height: 68px;
+}
+
+.doc-card:active {
+  transform: scale(0.96);
 }
 
 .doc-card:hover {
@@ -1528,7 +1558,11 @@ nav#siteNav {
   background: transparent;
   border: none;
   cursor: pointer;
-  transition: .3s var(--ease);
+  transition: all .2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.flow-tab-btn:active {
+  transform: scale(0.95);
 }
 
 .flow-tab-btn .cnt {
@@ -1749,6 +1783,12 @@ footer {
   align-items: center;
   justify-content: center;
   padding: 20px;
+  animation: modal-overlay-in 0.35s var(--ease) forwards;
+}
+
+@keyframes modal-overlay-in {
+  from { opacity: 0; backdrop-filter: blur(0px); }
+  to { opacity: 1; backdrop-filter: blur(4px); }
 }
 
 .modal-panel {
@@ -1761,6 +1801,12 @@ footer {
   border: 2px solid var(--line);
   position: relative;
   padding: 32px 28px;
+  animation: modal-panel-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes modal-panel-in {
+  from { opacity: 0; transform: translateY(20px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 .modal-header {
@@ -2239,3 +2285,19 @@ footer {
 .flow-link svg { width: 13px; height: 13px; transition: transform .3s var(--ease); }
 .flow-link:hover { background: var(--red); color: var(--cream); }
 .flow-link:hover svg { transform: translate(2px, -2px); }
+
+/* ==========================================================
+   GLOBAL BUTTON TACTILE SMOOTHNESS
+   ========================================================== */
+.btn-sm, .menu-btn, .modal-close, .flow-link, .tab-btn {
+  transition: all .2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.btn-sm:active:not(:disabled),
+.menu-btn:active:not(:disabled),
+.modal-close:active:not(:disabled),
+.flow-link:active:not(:disabled),
+.tab-btn:active:not(:disabled),
+button:active:not(:disabled) {
+  transform: scale(0.94) !important;
+}

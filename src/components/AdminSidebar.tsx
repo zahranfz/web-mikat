@@ -12,6 +12,9 @@ import {
   LogOut,
   ExternalLink,
   ShieldCheck,
+  Box,
+  Trophy,
+  FormInput,
 } from 'lucide-react';
 import { logoutAdmin } from '@/lib/supabaseClient';
 
@@ -28,6 +31,9 @@ export default function AdminSidebar() {
     { label: 'Dashboard', href: '/admin', icon: LayoutDashboard },
     { label: 'Peminjaman Alat', href: '/admin/peminjaman', icon: Package },
     { label: 'Delegasi Lomba', href: '/admin/delegasi', icon: Award },
+    { label: 'Katalog Inventaris', href: '/admin/inventory', icon: Box },
+    { label: 'Prestasi Mahasiswa', href: '/admin/achievements', icon: Trophy },
+    { label: 'Form Pendaftaran', href: '/admin/forms', icon: FormInput },
     { label: 'Program & Agenda', href: '/admin/proker', icon: CalendarDays },
     { label: 'Pengurus & Staf', href: '/admin/pengurus', icon: Users },
     { label: 'Audit Log', href: '/admin/audit-log', icon: ClipboardList },

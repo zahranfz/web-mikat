@@ -50,6 +50,23 @@ export interface DelegasiItem {
   created_at: string;
 }
 
+export interface InventoryItem {
+  id: string;
+  nama: string;
+  total: number;
+  tersedia: number;
+  kategori: string;
+}
+
+export interface AchievementItem {
+  id: string;
+  nama_mahasiswa: string;
+  jurusan: string;
+  nama_lomba: string;
+  prestasi: string;
+  tahun: string;
+}
+
 export const INITIAL_PROKER: ProkerItem[] = [
   {
     id: 'proker-1',
@@ -127,6 +144,20 @@ export const INITIAL_PROKER: ProkerItem[] = [
     chips: ['Branding', 'Desain Grafis'],
     urutan: 8,
   },
+];
+
+export const INITIAL_INVENTORY: InventoryItem[] = [
+  { id: 'inv-1', nama: 'Sound System / TOA', total: 2, tersedia: 2, kategori: 'Elektronik' },
+  { id: 'inv-2', nama: 'Bola Basket', total: 5, tersedia: 3, kategori: 'Olahraga' },
+  { id: 'inv-3', nama: 'Bola Futsal', total: 4, tersedia: 4, kategori: 'Olahraga' },
+  { id: 'inv-4', nama: 'Gitar Akustik', total: 2, tersedia: 1, kategori: 'Seni' },
+  { id: 'inv-5', nama: 'Tenda Dome', total: 3, tersedia: 0, kategori: 'Outdoor' },
+];
+
+export const INITIAL_ACHIEVEMENTS: AchievementItem[] = [
+  { id: 'ach-1', nama_mahasiswa: 'Rifki Pratama', jurusan: 'Teknik Informatika', nama_lomba: 'Kontes Robot Cerdas Indonesia 2026', prestasi: 'Juara 1 Nasional', tahun: '2026' },
+  { id: 'ach-2', nama_mahasiswa: 'Nadia Saphira', jurusan: 'Teknik Sipil', nama_lomba: 'BIM National Competition', prestasi: 'Juara 2', tahun: '2026' },
+  { id: 'ach-3', nama_mahasiswa: 'Bima Aryasena', jurusan: 'Teknik Elektro', nama_lomba: 'Lomba Inovasi Energi Terbarukan', prestasi: 'Best Inovation Award', tahun: '2025' },
 ];
 
 export const INITIAL_PENGURUS: PengurusItem[] = [

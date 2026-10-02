@@ -17,12 +17,15 @@ import {
   ExternalLink,
   Search,
   X,
+  Download,
+  Eye,
 } from 'lucide-react';
 
 export default function AdminDelegasiPage() {
   const [delegations, setDelegations] = useState<DelegasiItem[]>([]);
   const [filterStatus, setFilterStatus] = useState<string>('all');
   const [search, setSearch] = useState('');
+  const [previewDocUrl, setPreviewDocUrl] = useState<string | null>(null);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [newDel, setNewDel] = useState({
     nama_ketua: '',
@@ -40,6 +43,37 @@ export default function AdminDelegasiPage() {
     setDelegations(data);
   };
 
+  const generateReport = () => {
+    const headers = ['Nama Ketua', 'NIM', 'Jurusan', 'Nama Lomba', 'Penyelenggara', 'Kategori', 'Status', 'Nomor WA', 'Tanggal'];
+    const csvContent = delegations.map(d => 
+      [
+        `"${d.nama_ketua}"`, `"${d.nim}"`, `"${d.jurusan}"`, `"${d.nama_lomba}"`, 
+        `"${d.penyelenggara || ''}"`, `"${d.kategori}"`, `"${d.status}"`, 
+        `"${d.no_wa}"`, `"${d.created_at}"`
+      ].join(',')
+    );
+    const csvStr = [headers.join(','), ...csvContent].join('\n');
+    const blob = new Blob([csvStr], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.setAttribute('href', url);
+    link.setAttribute('download', `Laporan_Delegasi_Mikat_${new Date().toISOString().slice(0,10)}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const openPreview = (url: string) => {
+    let embedUrl = url;
+    if (url.includes('drive.google.com/file/d/')) {
+      const match = url.match(/\/d\/(.*?)\//);
+      if (match && match[1]) {
+        embedUrl = `https://drive.google.com/file/d/${match[1]}/preview`;
+      }
+    }
+    setPreviewDocUrl(embedUrl);
+  };
+
   useEffect(() => {
     loadData();
   }, []);
@@ -53,8 +87,28 @@ export default function AdminDelegasiPage() {
     loadData();
   };
 
-  const handleDelete = async (id: string, nama: string) => {
+  const handleDelete = async (id: string, nama: string, link_berkas: string) => {
     if (confirm(`Apakah Anda yakin ingin menghapus data delegasi "${nama}"?`)) {
+      // 1. Coba hapus file di Google Drive
+      if (link_berkas && link_berkas.includes('drive.google.com')) {
+        const match = link_berkas.match(/\/d\/(.*?)\//);
+        const fileId = match ? match[1] : null;
+        if (fileId) {
+          const scriptUrl = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL;
+          if (scriptUrl) {
+            try {
+              await fetch(scriptUrl, {
+                method: 'POST',
+                body: JSON.stringify({ action: 'delete', fileId })
+              });
+            } catch (err) {
+              console.error("Gagal menghapus file dari Drive", err);
+            }
+          }
+        }
+      }
+
+      // 2. Hapus data dari Supabase
       const deleted = await deleteDelegasi(id);
       if (!deleted) {
         alert('Data delegasi gagal dihapus.');
@@ -105,10 +159,16 @@ export default function AdminDelegasiPage() {
           </p>
         </div>
 
-        <button className="btn-pill primary" onClick={() => setIsAddModalOpen(true)}>
-          <Plus size={16} />
-          <span>Input Delegasi Manual</span>
-        </button>
+        <div style={{ display: 'flex', gap: '12px' }}>
+          <button className="btn-pill outline" onClick={generateReport} style={{ borderColor: '#CBD5E1', color: 'var(--navy)' }}>
+            <Download size={16} />
+            <span style={{ fontSize: '13px' }}>Generate Laporan</span>
+          </button>
+          <button className="btn-pill primary" onClick={() => setIsAddModalOpen(true)}>
+            <Plus size={16} />
+            <span style={{ fontSize: '13px' }}>Input Manual</span>
+          </button>
+        </div>
       </div>
 
       <div className="admin-card">
@@ -180,15 +240,27 @@ export default function AdminDelegasiPage() {
                     </span>
                   </td>
                   <td>
-                    <a
-                      href={item.link_berkas}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', color: '#2563EB', fontWeight: 600, fontSize: '12.5px' }}
-                    >
-                      <span>Lihat Berkas</span>
-                      <ExternalLink size={13} />
-                    </a>
+                    <div style={{ display: 'flex', gap: '8px' }}>
+                      <button
+                        onClick={() => openPreview(item.link_berkas)}
+                        className="btn-sm"
+                        style={{ background: '#F1F5F9', color: '#334155', border: '1px solid #E2E8F0' }}
+                        title="Preview Berkas"
+                      >
+                        <Eye size={13} />
+                        <span>Preview</span>
+                      </button>
+                      <a
+                        href={item.link_berkas}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-sm"
+                        style={{ background: '#EFF6FF', color: '#2563EB', border: '1px solid #BFDBFE' }}
+                        title="Buka Tab Baru"
+                      >
+                        <ExternalLink size={13} />
+                      </a>
+                    </div>
                   </td>
                   <td>
                     <a
@@ -227,7 +299,7 @@ export default function AdminDelegasiPage() {
                       )}
                       <button
                         className="btn-sm danger"
-                        onClick={() => handleDelete(item.id, item.nama_ketua)}
+                        onClick={() => handleDelete(item.id, item.nama_ketua, item.link_berkas)}
                         title="Hapus"
                       >
                         <Trash2 size={13} />
@@ -360,6 +432,28 @@ export default function AdminDelegasiPage() {
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* Preview Modal */}
+      {previewDocUrl && (
+        <div className="modal-overlay" onClick={() => setPreviewDocUrl(null)} style={{ zIndex: 9999 }}>
+          <div className="modal-panel" onClick={(e) => e.stopPropagation()} style={{ width: '90%', maxWidth: '900px', height: '85vh', padding: '0', display: 'flex', flexDirection: 'column' }}>
+            <div className="modal-header" style={{ padding: '16px 24px', borderBottom: '1px solid #E2E8F0' }}>
+              <h3 className="modal-title" style={{ fontSize: '18px' }}>Preview Berkas</h3>
+              <button className="modal-close" onClick={() => setPreviewDocUrl(null)}>
+                <X size={20} />
+              </button>
+            </div>
+            <div style={{ flex: 1, width: '100%', background: '#F8FAFC' }}>
+              <iframe
+                src={previewDocUrl}
+                style={{ width: '100%', height: '100%', border: 'none' }}
+                allow="autoplay"
+                title="Document Preview"
+              />
+            </div>
           </div>
         </div>
       )}

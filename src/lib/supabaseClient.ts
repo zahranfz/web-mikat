@@ -4,10 +4,14 @@ import {
   DelegasiItem,
   ProkerItem,
   PengurusItem,
+  InventoryItem,
+  AchievementItem,
   INITIAL_PEMINJAMAN,
   INITIAL_DELEGASI,
   INITIAL_PROKER,
   INITIAL_PENGURUS,
+  INITIAL_INVENTORY,
+  INITIAL_ACHIEVEMENTS,
 } from './initialData';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
@@ -551,3 +555,126 @@ export async function uploadAsset(
 
   return { success: true, url: data.publicUrl };
 }
+
+// -------------------------------------------------------------
+// 7. KATALOG INVENTARIS
+// -------------------------------------------------------------
+export async function fetchInventory(): Promise<InventoryItem[]> {
+  if (isSupabaseConfigured && supabase) {
+    const { data, error } = await supabase.from('inventory').select('*').order('nama', { ascending: true });
+    if (error) {
+      console.error('Failed to fetch inventory:', error.message);
+      return INITIAL_INVENTORY;
+    }
+    if (data) return data as InventoryItem[];
+  }
+  return INITIAL_INVENTORY;
+}
+
+export async function addInventory(item: Omit<InventoryItem, 'id'>) {
+  if (!isSupabaseConfigured || !supabase) return { error: 'Supabase tidak terkonfigurasi' };
+  const { data, error } = await supabase.from('inventory').insert([{ ...item }]);
+  return { data, error: error?.message };
+}
+
+export async function updateInventory(id: string, updates: Partial<InventoryItem>) {
+  if (!isSupabaseConfigured || !supabase) return { error: 'Supabase tidak terkonfigurasi' };
+  const { error } = await supabase.from('inventory').update(updates).eq('id', id);
+  return { error: error?.message };
+}
+
+export async function deleteInventory(id: string) {
+  if (!isSupabaseConfigured || !supabase) return { error: 'Supabase tidak terkonfigurasi' };
+  const { error } = await supabase.from('inventory').delete().eq('id', id);
+  return { error: error?.message };
+}
+
+// -------------------------------------------------------------
+// 8. HALL OF FAME (PRESTASI)
+// -------------------------------------------------------------
+export async function fetchAchievements(): Promise<AchievementItem[]> {
+  if (isSupabaseConfigured && supabase) {
+    const { data, error } = await supabase.from('achievements').select('*').order('tahun', { ascending: false });
+    if (error) {
+      console.error('Failed to fetch achievements:', error.message);
+      return INITIAL_ACHIEVEMENTS;
+    }
+    if (data) return data as AchievementItem[];
+  }
+  return INITIAL_ACHIEVEMENTS;
+}
+
+export async function addAchievement(item: Omit<AchievementItem, 'id'>) {
+  if (!isSupabaseConfigured || !supabase) return { error: 'Supabase tidak terkonfigurasi' };
+  const { data, error } = await supabase.from('achievements').insert([{ ...item }]);
+  return { data, error: error?.message };
+}
+
+export async function updateAchievement(id: string, updates: Partial<AchievementItem>) {
+  if (!isSupabaseConfigured || !supabase) return { error: 'Supabase tidak terkonfigurasi' };
+  const { error } = await supabase.from('achievements').update(updates).eq('id', id);
+  return { error: error?.message };
+}
+
+export async function deleteAchievement(id: string) {
+  if (!isSupabaseConfigured || !supabase) return { error: 'Supabase tidak terkonfigurasi' };
+  const { error } = await supabase.from('achievements').delete().eq('id', id);
+  return { error: error?.message };
+}
+
+// -------------------------------------------------------------
+// 8. FORM BUILDER
+// -------------------------------------------------------------
+export async function fetchForms() {
+  if (!isSupabaseConfigured || !supabase) return [];
+  const { data, error } = await supabase.from('forms').select('*').order('created_at', { ascending: false });
+  if (error) {
+    console.error('Failed to fetch forms:', error.message);
+    return [];
+  }
+  return data || [];
+}
+
+export async function fetchFormBySlug(slug: string) {
+  if (!isSupabaseConfigured || !supabase) return null;
+  const { data, error } = await supabase.from('forms').select('*').eq('slug', slug).single();
+  if (error) {
+    console.error('Failed to fetch form by slug:', error.message);
+    return null;
+  }
+  return data;
+}
+
+export async function addForm(form: any) {
+  if (!isSupabaseConfigured || !supabase) return { error: 'Supabase tidak terkonfigurasi' };
+  const { data, error } = await supabase.from('forms').insert([form]);
+  return { data, error: error?.message };
+}
+
+export async function submitFormResponse(formId: string, answers: any) {
+  if (!isSupabaseConfigured || !supabase) return { error: 'Supabase tidak terkonfigurasi' };
+  const { data, error } = await supabase.from('form_responses').insert([{ form_id: formId, answers }]);
+  return { data, error: error?.message };
+}
+
+export async function fetchFormResponses(formId: string) {
+  if (!isSupabaseConfigured || !supabase) return [];
+  const { data, error } = await supabase.from('form_responses').select('*').eq('form_id', formId).order('created_at', { ascending: false });
+  if (error) {
+    console.error('Failed to fetch responses:', error.message);
+    return [];
+  }
+  return data || [];
+}
+
+
+export async function deleteForm(id: string) {
+  if (!isSupabaseConfigured || !supabase) return false;
+  const { error } = await supabase.from('forms').delete().eq('id', id);
+  if (error) {
+    console.error('Failed to delete form:', error.message);
+    return false;
+  }
+  return true;
+}
+

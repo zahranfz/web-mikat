@@ -18,7 +18,7 @@ export default function LoanFormModal({ isOpen, onClose, onSuccess }: LoanFormMo
   const [formData, setFormData] = useState({
     nama_peminjam: '',
     nim: '',
-    jurusan: 'Teknik Informatika',
+    jurusan: 'Informatika',
     nama_alat: '',
     jumlah: 1,
     tanggal_pinjam: '',
@@ -54,7 +54,7 @@ export default function LoanFormModal({ isOpen, onClose, onSuccess }: LoanFormMo
     setFormData({
       nama_peminjam: '',
       nim: '',
-      jurusan: 'Teknik Informatika',
+      jurusan: 'Informatika',
       nama_alat: '',
       jumlah: 1,
       tanggal_pinjam: '',
@@ -113,7 +113,7 @@ export default function LoanFormModal({ isOpen, onClose, onSuccess }: LoanFormMo
                   type="text"
                   required
                   className="form-input"
-                  placeholder="Contoh: Bagas Aditya"
+                  placeholder="Masukkan nama anda"
                   value={formData.nama_peminjam}
                   onChange={(e) => setFormData({ ...formData, nama_peminjam: e.target.value })}
                 />
@@ -125,24 +125,28 @@ export default function LoanFormModal({ isOpen, onClose, onSuccess }: LoanFormMo
                   type="text"
                   required
                   className="form-input"
-                  placeholder="Contoh: H1D022045"
+                  placeholder="Masukkan NIM anda"
                   value={formData.nim}
                   onChange={(e) => setFormData({ ...formData, nim: e.target.value })}
                 />
               </div>
 
               <div className="form-group">
-                <label className="form-label">Jurusan *</label>
+                <label className="form-label">Program Studi *</label>
                 <select
                   className="form-select"
                   value={formData.jurusan}
                   onChange={(e) => setFormData({ ...formData, jurusan: e.target.value })}
                 >
-                  <option value="Teknik Informatika">Teknik Informatika</option>
                   <option value="Teknik Elektro">Teknik Elektro</option>
                   <option value="Teknik Sipil">Teknik Sipil</option>
                   <option value="Teknik Geologi">Teknik Geologi</option>
+                  <option value="Informatika">Informatika</option>
                   <option value="Teknik Industri">Teknik Industri</option>
+                  <option value="Teknik Mesin">Teknik Mesin</option>
+                  <option value="Teknik Komputer">Teknik Komputer</option>
+                  <option value="Arsitektur">Arsitektur</option>
+                  <option value="Teknik Pertambangan">Teknik Pertambangan</option>
                 </select>
               </div>
 

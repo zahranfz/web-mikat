@@ -8,14 +8,16 @@ import Scoreboard from '@/components/Scoreboard';
 import AccordionProker from '@/components/AccordionProker';
 import LoanFormModal from '@/components/LoanFormModal';
 import DelegationFormModal from '@/components/DelegationFormModal';
+import TrackStatusModal from '@/components/TrackStatusModal';
 import {
   fetchProker,
   fetchPengurus,
-  fetchPeminjaman,
   fetchDelegasi,
   fetchStorageFiles,
+  fetchInventory,
+  fetchAchievements,
 } from '@/lib/supabaseClient';
-import { ProkerItem, PengurusItem } from '@/lib/initialData';
+import { ProkerItem, PengurusItem, InventoryItem, AchievementItem } from '@/lib/initialData';
 import {
   FileText,
   FileDown,
@@ -26,14 +28,19 @@ import {
   ChevronRight,
   ExternalLink,
   X,
+  Package,
+  Award,
 } from 'lucide-react';
 
 export default function HomePage() {
   const [prokers, setProkers] = useState<ProkerItem[]>([]);
   const [pengurus, setPengurus] = useState<PengurusItem[]>([]);
+  const [inventoryItems, setInventoryItems] = useState<InventoryItem[]>([]);
+  const [achievements, setAchievements] = useState<AchievementItem[]>([]);
   const [galleryImages, setGalleryImages] = useState<Array<{ url: string; label: string }>>([]);
   const [isLoanModalOpen, setIsLoanModalOpen] = useState(false);
   const [isDelegationModalOpen, setIsDelegationModalOpen] = useState(false);
+  const [isTrackStatusModalOpen, setIsTrackStatusModalOpen] = useState(false);
   const [activeFlow, setActiveFlow] = useState<'berbayar' | 'gratis'>('berbayar');
   const [selectedPhoto, setSelectedPhoto] = useState<{
     name: string;
@@ -52,10 +59,12 @@ export default function HomePage() {
 
   useEffect(() => {
     async function loadData() {
-      const [prokerData, pengurusData, storageGallery] = await Promise.all([
+      const [prokerData, pengurusData, storageGallery, invData, achData] = await Promise.all([
         fetchProker(),
         fetchPengurus(),
         fetchStorageFiles('galeri'),
+        fetchInventory(),
+        fetchAchievements(),
       ]);
 
       const storageGalleryMap = new Map(
@@ -69,6 +78,8 @@ export default function HomePage() {
 
       setProkers(prokerData);
       setPengurus(pengurusData);
+      setInventoryItems(invData);
+      setAchievements(achData);
       setGalleryImages(orderedGallery);
     }
     loadData();
@@ -127,6 +138,13 @@ export default function HomePage() {
               className="btn-pill secondary"
             >
               Daftar Delegasi Lomba
+            </button>
+            <button
+              onClick={() => setIsTrackStatusModalOpen(true)}
+              className="btn-pill outline"
+              style={{ borderColor: 'var(--navy)', color: 'var(--navy)' }}
+            >
+              Cek Status Pengajuan
             </button>
           </div>
         </section>
@@ -347,6 +365,47 @@ export default function HomePage() {
           </div>
         </section>
 
+        <div className="stitch navy"></div>
+
+        {/* ================= HALL OF FAME ================= */}
+        <section id="prestasi" className="sec" style={{ background: 'var(--cream)' }}>
+          <div className="container">
+            <div className="sec-head">
+              <div>
+                <div className="eyebrow">
+                  <span className="stars"><span>★</span><span>★</span><span>★</span></span>
+                  Prestasi
+                </div>
+                <h2 className="sec-title">Hall of Fame</h2>
+              </div>
+              <p className="sec-desc">
+                Papan kebanggaan mahasiswa Fakultas Teknik Unsoed yang telah menorehkan prestasi dalam berbagai perlombaan.
+              </p>
+            </div>
+            
+            <div className="doc-grid" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))' }}>
+              {achievements.map((ach) => (
+                <div key={ach.id} className="doc-card" style={{ padding: '24px', flexDirection: 'column', alignItems: 'flex-start', gap: '16px' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center' }}>
+                    <div className="doc-tag" style={{ background: '#FEF3C7', color: '#92400E', borderColor: '#FDE68A' }}>
+                      <Award size={14} style={{ marginRight: '4px' }} />
+                      {ach.prestasi}
+                    </div>
+                    <span style={{ fontSize: '13px', fontWeight: 700, color: 'var(--ink-soft)' }}>{ach.tahun}</span>
+                  </div>
+                  <div>
+                    <h4 style={{ fontSize: '18px', fontWeight: 800, color: 'var(--navy)', marginBottom: '4px' }}>{ach.nama_mahasiswa}</h4>
+                    <p style={{ fontSize: '13px', color: 'var(--ink-soft)' }}>{ach.jurusan}</p>
+                  </div>
+                  <div style={{ marginTop: 'auto', paddingTop: '16px', borderTop: '1px solid var(--line)', width: '100%' }}>
+                    <p style={{ fontSize: '13px', fontWeight: 600, color: 'var(--ink)' }}>{ach.nama_lomba}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ================= PROKER & AGENDA ================= */}
         <section id="proker" className="sec" style={{ background: 'var(--cream-soft)' }}>
           <div className="container">
@@ -378,6 +437,37 @@ export default function HomePage() {
                   <span className="stars"><span>★</span><span>★</span><span>★</span></span>
                   Fasilitas
                 </div>
+                <h2 className="sec-title">Katalog Inventaris</h2>
+              </div>
+              <p className="sec-desc">
+                Berikut adalah daftar ketersediaan alat dan perlengkapan olahraga/seni yang dapat dipinjam.
+              </p>
+            </div>
+
+            <div className="doc-grid" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', marginBottom: '64px' }}>
+              {inventoryItems.map((inv) => (
+                <div key={inv.id} className="doc-card" style={{ flexDirection: 'column', alignItems: 'flex-start', padding: '20px' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'flex-start' }}>
+                    <div style={{ padding: '8px 12px', background: 'var(--navy)', color: 'var(--cream)', borderRadius: '8px', marginBottom: '16px' }}>
+                      <Package size={24} />
+                    </div>
+                    <div style={{ fontSize: '12px', fontWeight: 700, padding: '4px 10px', borderRadius: '20px', background: inv.tersedia > 0 ? '#D1FAE5' : '#FEE2E2', color: inv.tersedia > 0 ? '#065F46' : '#991B1B' }}>
+                      {inv.tersedia > 0 ? 'Tersedia' : 'Sedang Dipinjam'}
+                    </div>
+                  </div>
+                  <h4 style={{ fontSize: '16px', fontWeight: 800, color: 'var(--navy)' }}>{inv.nama}</h4>
+                  <p style={{ fontSize: '13px', color: 'var(--ink-soft)', marginTop: '4px' }}>Kategori: {inv.kategori}</p>
+                  
+                  <div style={{ marginTop: 'auto', paddingTop: '16px', borderTop: '1px solid var(--line)', width: '100%', display: 'flex', justifyContent: 'space-between' }}>
+                    <span style={{ fontSize: '13px', fontWeight: 600 }}>Total: {inv.total}</span>
+                    <span style={{ fontSize: '13px', fontWeight: 600, color: 'var(--red)' }}>Tersedia: {inv.tersedia}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="sec-head">
+              <div>
                 <h2 className="sec-title">Alur Peminjaman Inventaris</h2>
               </div>
               <p className="sec-desc">
@@ -688,6 +778,10 @@ export default function HomePage() {
       <DelegationFormModal
         isOpen={isDelegationModalOpen}
         onClose={() => setIsDelegationModalOpen(false)}
+      />
+      <TrackStatusModal
+        isOpen={isTrackStatusModalOpen}
+        onClose={() => setIsTrackStatusModalOpen(false)}
       />
     </>
   );
